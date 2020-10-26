@@ -9,6 +9,10 @@ C7H15                2   459.6   6.253   0.0 0.0 1.0 !   WJP
 */
 //First read the tran.data
 IFstream speciesInfo(mesh.time().constant()/"trandat");
+if(!speciesInfo.good())
+{
+	Info << FatalErrorIn( "cannot open trandat in constant") << abort(FatalError);
+}
 Foam::string   headerStr;
 Foam::word    thisSpecies;
 boolList foundSpecies(Y.size(), false);
