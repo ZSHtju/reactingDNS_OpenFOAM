@@ -117,39 +117,6 @@ diffsh *= 0;
 
 	fvOptions.correct(he);
 
-if(boundTemperature)
-{
-	forAll(rho, icell)
-	{ 
-		gasHThermoPhysics mixture(0.0*specieData[0]);
-		for(label kk=0; kk < Y.size(); kk++)
-		{
-			mixture += Y[kk][icell]*specieData[kk];
-		}
-		he[icell]   = max(mixture.Hs(p[icell],Tmin.value()),he[icell]);
-		he[icell]   = min(mixture.Hs(p[icell],Tmax.value()),he[icell]);
-	}
-
-
-	forAll(he.boundaryField(), patchi)
-	{
-		forAll(he.boundaryField()[patchi],facei)
-		{
-			gasHThermoPhysics mixture(0.0*specieData[0]);
-			for(label kk=0; kk < Y.size(); kk++)
-			{
-				mixture += Y[kk].boundaryField()[patchi][facei]*specieData[kk];
-			}
-			scalar pi = p.boundaryField()[patchi][facei];
-			scalar& hei = he.boundaryFieldRef()[patchi][facei]; //250717
-			he.boundaryFieldRef()[patchi][facei]   = max(mixture.Hs(pi,Tmin.value()),hei);
-			he.boundaryFieldRef()[patchi][facei]   = min(mixture.Hs(pi,Tmax.value()),hei);
-
-		}
-	}
-
-}
-
     thermo.correct();
 
     Info<< "min/max(T) = "

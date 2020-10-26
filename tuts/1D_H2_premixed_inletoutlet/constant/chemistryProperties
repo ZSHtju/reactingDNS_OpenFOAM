@@ -37,59 +37,7 @@ odeCoeffs
     relTol          1e-1;
 }
 
-pReff  pReff [1 -1 -2 0 0] 101325;
+
 // ************************************************************************* //
-chemistryLoadBalanceOfOdeTime off;
-babaCCM                off;
-writeAvgPressure       on;
 differentialDiffusion on;
-
-setReactingBox         off;//ff;
-reactingBoxCenter      (0.0005 0.0005 0.0005);
-reactingBoxL           0.1; //spark size in x direction
-reactingBoxW           0.1; //spark size in y direction
-reactingBoxH           0.1; //spark size in z direction
-
-sparkHotSpot           off;
-sparkCenter            (0.001 0.001 0.001);
-sparkBeg               0;
-sparkDuration          0.05;
-sparkTemperature       1800; // was 2000 k from 0-0.064 sec;
-sparkdTdt              1e8;
-minSparkEqRatio        0.8;
-maxSparkEqRatio        1.2;
-
-//for spherical spark
-spherSpark             off;
-sparkRadi              0.0001;
-
-//for box spark
-boxSpark               off;
-sparkL                 0.05; //spark size in x direction
-sparkW                 0.07; //spark size in y direction
-sparkH                 0.05; //spark size in z direction
-
-
-//for cone spark
-coneSpark               off;
-sparkConeRadi          0.025; //spark cone radius
-sparkConeHeight        0.05; //spark cone height
-sparkConeThickness     0.01; //spark cone thickness
-
-blendingResults        off;
- 
-Prt               Prt [0 0 0 0 0] 0.7;
-Sct                    Sct     [0 0 0 0 0] 0.7;
-Cphi                   Cphi    [0 0 0 0 0] 2.0;
-Cchi                   Cchi    [0 0 0 0 0] 2.0;
-
-Tmax                   Tmax    [0 0 0 1 0] 2300.0;
-Tmin                   Tmin    [0 0 0 1 0] 290.0;
-
-boundTemperature       on;
-EmissionsOutPut        off;
-writeWienerSources     off;
-readStochasticFields   off;
-writeStochasticFields  off;
-dichotomicVectorsSym   off;
-
+thermalDiffusion off;
