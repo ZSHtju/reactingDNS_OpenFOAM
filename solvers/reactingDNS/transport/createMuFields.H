@@ -43,34 +43,6 @@ volScalarField mixMu
     dimensionedScalar("mixMu",dimensionSet (1,-1,-1,0,0,0,0),0.0)
 );
 
-volScalarField Mui
-(
-    IOobject
-    (
-        "Mui",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("Mui",dimensionSet (1,-1,-1,0,0,0,0),0.0)
-);
-
-volScalarField Muz
-(
-    IOobject
-    (
-        "Muz",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("Muz",dimensionSet (1,-1,-1,0,0,0,0),0.0)
-);
-
 volScalarField yhi
 (
     IOobject
