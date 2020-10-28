@@ -33,7 +33,7 @@ Current method is simple and can be easily implemented in other solvers in OpenF
 
 [1] Kee, R. J.; Dixon-Lewis, G.; Warnatz, J.; Coltrin, M. E.; Miller, J. A. A Fortran com-puter code package for the evaluation of gas-phase multicomponent transport properties.Sandia National Laboratories Report SAND86-8246, 1986, 13, 80401–1887.
 
-[2] Zhong, S.; Zhang, F.; Jangi, M.; Bai, X.-S.; Yao, M.; Peng, Z. Structure and propagationof n-heptane/air premixed flame in low temperature ignition regime. Applied  Energy, 2020, 275, 115320.
+[2] Zhong, S.; Zhang, F.; Jangi, M.; Bai, X.-S.; Yao, M.; Peng, Z. Structure and propagation of n-heptane/air premixed flame in low temperature ignition regime. Applied  Energy, 2020, 275, 115320.
 
 [3] Zhang, N.; Zhang, F.; Zhong, S.; Peng, Z.; Yu, J.; Liu, H.; Xu, C. Numerical and theoretical investigation of ethanol/air flame instability. Combustion Theory and Modelling, 2020, 1–22.
 
