@@ -37,6 +37,6 @@ Current method is simple and can be easily implemented in other solvers in OpenF
 
 [3] Zhang, N.; Zhang, F.; Zhong, S.; Peng, Z.; Yu, J.; Liu, H.; Xu, C. Numerical and theoretical investigation of ethanol/air flame instability. Combustion Theory and Modelling, 2020, 1–22.
 
-[4] Zhong, S.;  Zhang, F.;  Peng, Z.;  Bai, F.;  Du, Q. Roles of CO2 and H2O in premixedturbulent oxy-fuel combustion. Fuel, 2018, 234, 1044–1054.
+[4] Zhong, S.;  Zhang, F.;  Peng, Z.;  Bai, F.;  Du, Q. Roles of CO2 and H2O in premixed turbulent oxy-fuel combustion. Fuel, 2018, 234, 1044–1054.
 
 [5] Zhong, S.; Zhang, F.; Du, Q.; Peng, Z. Characteristics of reactivity controlled combustion with n-heptane low temperature reforming products. Fuel, 2020, 275, 117980.
