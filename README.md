@@ -24,3 +24,8 @@ Put the binaryDiff, speciesLambda, speciesMu, thermoDiff and trandat into the co
 Step 4:
 
 Trun on/off the switch of differetialDiffusion and thermalDiffusion. If differetialDiffusion is off, the unity Lewis number will be adopted for all species.
+
+Attention:
+
+When the species name starts with number in trandat, you need to change it to word by add double quotation marks, e.g. 1H2 to "1H2".
+
