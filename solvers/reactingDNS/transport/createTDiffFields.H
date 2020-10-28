@@ -1,4 +1,4 @@
-//**********************Binary Diffusion****************//
+//**********************thermal Diffusion****************//
 List<dimensionedScalar> TDiff1(Y.size()*2);
 List<dimensionedScalar> TDiff2(Y.size()*2);
 List<dimensionedScalar> TDiff3(Y.size()*2);

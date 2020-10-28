@@ -13,7 +13,5 @@ IOdictionary chemistryProperties
     )
 );
 
-//Switch prescibed_Le(chemistryProperties.lookup("prescibed_Le"));
-//Switch writeAvgPressure(chemistryProperties.lookup("writeAvgPressure"));
 Switch differentialDiffusion(chemistryProperties.lookup("differentialDiffusion"));
 Switch thermalDiffusion(chemistryProperties.lookup("thermalDiffusion"));
