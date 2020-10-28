@@ -7,3 +7,20 @@ Current solver use to the third-order logarithm polunomial fitting method to des
 
 Usage:
 
+Step 1:
+
+Using ANSYS CHEMKIN to fit the transport data. The tran.out can be outputted when you selected to process Transport properties with Fit with Verbose Output. 
+
+Step 2:
+
+Using the formatConvert python code to convert tran.out to four files: binaryDiff, speciesLambda, speciesMu and thermoDiff.
+
+Only H and H2 are considered to have the thermoDiff.
+
+Step 3:
+
+Put the binaryDiff, speciesLambda, speciesMu, thermoDiff and trandat into the constant directory.
+
+Step 4:
+
+Trun on/off the switch of differetialDiffusion and thermalDiffusion. If differetialDiffusion is off, the unity Lewis number will be adopted for all species.
