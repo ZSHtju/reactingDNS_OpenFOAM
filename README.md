@@ -23,7 +23,7 @@ Put the binaryDiff, speciesLambda, speciesMu, thermoDiff and trandat into the co
 
 Step 4:
 
-Trun on/off the switch of differetialDiffusion and thermalDiffusion. If differetialDiffusion is off, the unity Lewis number will be adopted for all species.
+Trun on/off the switch of differentialDiffusion and thermalDiffusion. If differetialDiffusion is off, the unity Lewis number will be adopted for all species.
 
 Attention:
 
