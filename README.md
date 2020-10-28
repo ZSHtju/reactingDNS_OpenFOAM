@@ -9,7 +9,7 @@ Usage:
 
 Step 1:
 
-Using ANSYS CHEMKIN to fit the transport data. The tran.out can be outputted when you selected to process Transport properties with Fit with Verbose Output. 
+Using ANSYS CHEMKIN to fit the transport data. The tran.out can be outputted when you selecte to process Transport properties with Fit with Verbose Output. 
 
 Step 2:
 
