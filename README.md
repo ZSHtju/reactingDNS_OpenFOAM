@@ -39,4 +39,4 @@ Current method is simple and can be easily implemented in other solvers in OpenF
 
 [4] Zhong, S.;  Zhang, F.;  Peng, Z.;  Bai, F.;  Du, Q. Roles of CO2 and H2O in premixedturbulent oxy-fuel combustion.Fuel, 2018, 234, 1044–1054.
 
-[5] Zhong, S.; Zhang, F.; Du, Q.; Peng, Z. Characteristics of reactivity controlled combustion with n-heptane low temperature reforming products.Fuel2020, 275, 117980.
+[5] Zhong, S.; Zhang, F.; Du, Q.; Peng, Z. Characteristics of reactivity controlled combustion with n-heptane low temperature reforming products.Fuel, 2020, 275, 117980.
