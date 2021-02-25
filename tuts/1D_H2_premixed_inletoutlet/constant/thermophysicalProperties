@@ -17,7 +17,7 @@ FoamFile
 thermoType
 {
     type            hePsiThermo;
-    mixture         reactingMixture;
+    mixture         multiComponentMixture;
     transport       sutherland;
     thermo          janaf;
     energy          sensibleEnthalpy;
@@ -26,18 +26,8 @@ thermoType
 }
 
 inertSpecie N2;
-//inertSpecie AR;
-fuel        H2;
 
-//chemistryReader foamChemistryReader;
-
-CHEMKINFile     "$FOAM_CASE/chemkin/chem.inp";
-CHEMKINThermoFile "$FOAM_CASE/chemkin/therm.dat";
-CHEMKINTransportFile "$FOAM_CASE/chemkin/transportProperties";
-
-//foamChemistryFile "$FOAM_CASE/constant/reactions";
-
-//foamChemistryThermoFile "$FOAM_CASE/constant/thermo.Di";
+#include "thermo.compressibleGas"
 
 
 // ************************************************************************* //

@@ -115,19 +115,19 @@ volScalarField chemistryhsSource
 
 
  
-PtrList<gasHThermoPhysics> specieData(Y.size());
+PtrList<sutherlandTransport<species::thermo<janafThermo<perfectGas<specie>>,sensibleEnthalpy>>> specieData(Y.size());
 forAll(specieData, i)
 {
 	specieData.set
 	(
 		i,
-		new gasHThermoPhysics
+		new sutherlandTransport<species::thermo<janafThermo<perfectGas<specie>>,sensibleEnthalpy>>
 		(
-			dynamic_cast<const reactingMixture<gasHThermoPhysics>&>
-				(thermo).speciesData()[i]
+			dynamic_cast<const multiComponentMixture<sutherlandTransport<species::thermo<janafThermo<perfectGas<specie>>,sensibleEnthalpy>>>&>
+				(thermo).specieThermos()[i]
 		)
 	);
-}
+} 
 
 
 //List<dimensionedScalar> Le(Y.size(),0.0);

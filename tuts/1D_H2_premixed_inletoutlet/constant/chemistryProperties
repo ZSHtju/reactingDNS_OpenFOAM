@@ -37,6 +37,7 @@ odeCoeffs
     relTol          1e-1;
 }
 
+#include "reactions"
 
 // ************************************************************************* //
 differentialDiffusion on;

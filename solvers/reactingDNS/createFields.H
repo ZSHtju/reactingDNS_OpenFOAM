@@ -56,9 +56,9 @@ pressureControl pressureControl(p, rho, pimple.dict(), false);
 mesh.setFluxRequired(p.name());
 
 Info << "Creating turbulence model.\n" << nl;
-autoPtr<compressible::turbulenceModel> turbulence
+autoPtr<compressible::momentumTransportModel> turbulence
 (
-    compressible::turbulenceModel::New
+    compressible::momentumTransportModel::New
     (
         rho,
         U,
@@ -66,6 +66,21 @@ autoPtr<compressible::turbulenceModel> turbulence
         thermo
     )
 );
+
+
+Info<< "Creating thermophysical transport model\n" << endl;
+autoPtr<psiReactionThermophysicalTransportModel> thermophysicalTransport
+(
+    psiReactionThermophysicalTransportModel::New(turbulence(), thermo)
+);
+
+/*
+Info<< "Creating reaction model\n" << endl;
+autoPtr<CombustionModel<psiReactionThermo>> reaction
+(
+    CombustionModel<psiReactionThermo>::New(thermo, turbulence())
+);
+*/
 
 Info<< "Creating field dpdt\n" << endl;
 volScalarField dpdt
@@ -96,7 +111,4 @@ fields.add(thermo.he());
 thermo.correct();
 
 #include "createMRF.H"
-
-
-
-
+#include "createFvOptions.H"

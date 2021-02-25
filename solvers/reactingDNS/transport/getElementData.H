@@ -1,18 +1,11 @@
 label  nSpecies = composition.Y().size();
-List<List<specieElement> > specieComp(Y.size());
+List<List<specieElement>> specieComp(Y.size());
 speciesTable speciesTab = thermo.composition().species();
-autoPtr<chemistryReader<gasHThermoPhysics>> tchemRead
-(
-    chemistryReader<gasHThermoPhysics>::New(thermo,speciesTab)
-);
-
-const HashTable<List<specieElement> >& specComp(tchemRead().specieComposition());
+const HashTable<List<specieElement>>& specComp = dynamic_cast<const multiComponentMixture<sutherlandTransport<species::thermo<janafThermo<perfectGas<specie>>,sensibleEnthalpy>>>&>(thermo).specieComposition();
 forAll(specieComp,i)
 {
-    specieComp[i] = specComp[Y[i].name()];
-
+    specieComp[i] = specComp[Y[i].member()];
 }
-
 wordList elementNames(4);
 
 {
@@ -41,6 +34,6 @@ forAll(Y, i)
 
     }
 
-    Info << specieData[i].W() << endl;
-    spInfo[i][4] = specieData[i].W();
+    Info << composition.Wi(i) << endl;
+    spInfo[i][4] = composition.Wi(i);
 }

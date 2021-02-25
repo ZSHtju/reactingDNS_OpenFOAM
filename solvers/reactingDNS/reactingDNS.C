@@ -40,31 +40,47 @@ Description
 	Zhang, N; et al. Combustion Theory and Modelling, 2020 1-22.
 	
 \*---------------------------------------------------------------------------*/
-
 #include "fvCFD.H"
-#include "turbulentFluidThermoModel.H"
+#include "fluidThermoMomentumTransportModel.H"
+#include "psiReactionThermophysicalTransportModel.H"
 #include "psiReactionThermo.H"
 #include "BasicChemistryModel.H"
-#include "reactingMixture.H"
 #include "chemistrySolver.H"
-#include "thermoPhysicsTypes.H"
+//#include "thermoPhysicsTypes.H"
 #include "basicSpecieMixture.H"
+#include "multiComponentMixture.H"
+#include "multivariateScheme.H"
 #include "pimpleControl.H"
 #include "pressureControl.H"
 #include "fvOptions.H"
-#include "fixedFluxPressureFvPatchScalarField.H"
+#include "localEulerDdtScheme.H"
+#include "fvcSmooth.H"
 
-#include "multivariateScheme.H"
+#include "specie.H"
+#include "perfectGas.H"
+#include "incompressiblePerfectGas.H"
+#include "perfectFluid.H"
+#include "adiabaticPerfectFluid.H"
+#include "rhoConst.H"
+#include "hConstThermo.H"
+#include "eConstThermo.H"
+#include "janafThermo.H"
+
+#include "sensibleEnthalpy.H"
+#include "sensibleInternalEnergy.H"
+#include "thermo.H"
+#include "sutherlandTransport.H"
+#include "constTransport.H"
+
+#include "icoPolynomial.H"
+#include "hPolynomialThermo.H"
+#include "polynomialTransport.H"
 
 #include "IFstream.H"
 #include "OFstream.H"
 #include "Switch.H"
 #include "Random.H"
-#include "fvOptions.H"
-#include "localEulerDdtScheme.H"
-#include "fvcSmooth.H"
 #include "mathematicalConstants.H"
-#include "chemkinReader.H"
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 int main(int argc, char *argv[])
@@ -80,7 +96,6 @@ int main(int argc, char *argv[])
     #include "createFields.H"
     #include "createFieldRefs.H"
 
-    #include "createFvOptions.H"
     #include "readChemistryProperties.H"
 
 	#include "createDiffFields.H"
@@ -104,7 +119,7 @@ int main(int argc, char *argv[])
 	#include "readThermalDiff.H"
     #include "readSpeciesLambda.H"
     #include "readSpeciesMu.H"
-    #include "getElementDate.H"
+    #include "getElementData.H"
 
     while (runTime.run())
     {
