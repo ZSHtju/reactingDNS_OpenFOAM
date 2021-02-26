@@ -105,8 +105,9 @@ int main(int argc, char *argv[])
 
     turbulence->validate();
 
-    #include "compressibleCourantNo.H"
-    #include "setInitialDeltaT.H"
+
+	#include "compressibleCourantNo.H"
+	#include "setInitialDeltaT.H"
 
 
 
@@ -124,8 +125,10 @@ int main(int argc, char *argv[])
     while (runTime.run())
     {
         #include "readTimeControls.H"
-        #include "compressibleCourantNo.H"
-        #include "setDeltaT.H"
+
+		#include "compressibleCourantNo.H"
+		#include "setDeltaT.H"
+
 
 
         nStep +=1;
@@ -151,25 +154,20 @@ int main(int argc, char *argv[])
 				#include "Y-hEqn.H"
 			}
 
-            // --- Pressure corrector loop
+             // --- Pressure corrector loop
             while (pimple.correct())
             {
-               if (pimple.consistent())
-                {
-                    #include "pcEqn.H"
-                }
-               else
-                {
-                    #include "pEqn.H"
-                }
+                #include "pEqn.H"
             }
 
             if (pimple.turbCorr())
             {
                 turbulence->correct();
+                thermophysicalTransport->correct();
             }
         }
 
+		rho = thermo.rho();
 
         runTime.write();
         Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
