@@ -1,0 +1,36 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.0                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+version                         2.0;
+format                          ascii;
+class                           dictionary;
+object                          CCMProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+babaCCM                              off;
+ratioOxygenToCarbonElementInFuel     0; //fuel:CH3OH;
+chemicallyFrozenT                    chemicallyFrozenT [0 0 0 1 0] 300.;
+maxFlammabilityLimit                 maxFlammabilityLimit [0 0 0 0 0] 20;
+minFlammabilityLimit                 minFlammabilityLimit [0 0 0 0 0] 1e-6;
+chemistryLoadBalancing  on;
+expChi                  on; //MZ2 = exp(-MZ2)
+elementalChi            on;//off; //MZ2 = exp(-MZ2)
+bilgerMixFrc            on; //MZ2 = exp(-MZ2)
+
+J_H_Ox:J_H_fu       0.05126  0.25;
+J_C_Ox:J_C_fu       0.0    0.75;
+J_O_Ox:J_O_fu       0.94874  0.00;
+min:max:SpanZoneJe  0   20   0.01;
+min:max:SpanZoneT   300 3000 5;
+min:max:SpanZoneXi  0   1    0.01;
+
+CCMspecies;
+// *** always keep this line ************;
+C2H5OH 0 1 0.001;
+N2 0 1 0.001;

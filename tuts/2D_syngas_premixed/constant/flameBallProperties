@@ -1,0 +1,28 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.0                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+version                         2.0;
+format                          ascii;
+class                           dictionary;
+object                          flameBallProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// for circle
+innerBunrtRadius                    innerBunrtRadius [0 1 0 0 0] 3.75e-4;
+outerBunrtRadius                    outerBunrtRadius [0 1 0 0 0] 6e-4;
+CCx     0.004;
+CCy     0.004;
+CCz     0.00004;
+// for circle
+
+amplitudeFactor  8; // real amplitude = (outerBunrtRadius-innerBunrtRadius)/amplitudeFactor;
+frequency  8;  //  2*pi*omega
+
+

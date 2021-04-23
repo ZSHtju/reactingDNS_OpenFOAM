@@ -1,0 +1,129 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.0                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+version                         2.0;
+format                          ascii;
+class                           dictionary;
+object                          speciesLambda;
+}
+
+// Scheme: transport fitting
+
+O
+{
+Lambda1	0.174E+01	;
+Lambda2	0.187E+01	;
+Lambda3	-0.161E+00	;
+Lambda4	0.705E-02	;
+}
+O2
+{
+Lambda1	-0.290E-01	;
+Lambda2	0.214E+01	;
+Lambda3	-0.173E+00	;
+Lambda4	0.737E-02	;
+}
+N2
+{
+Lambda1	0.692E+01	;
+Lambda2	-0.904E+00	;
+Lambda3	0.266E+00	;
+Lambda4	-0.137E-01	;
+}
+H
+{
+Lambda1	-0.435E+00	;
+Lambda2	0.343E+01	;
+Lambda3	-0.361E+00	;
+Lambda4	0.156E-01	;
+}
+H2
+{
+Lambda1	0.726E+01	;
+Lambda2	0.201E+00	;
+Lambda3	0.463E-01	;
+Lambda4	-0.538E-03	;
+}
+H2O
+{
+Lambda1	0.160E+02	;
+Lambda2	-0.576E+01	;
+Lambda3	0.107E+01	;
+Lambda4	-0.540E-01	;
+}
+OH
+{
+Lambda1	0.105E+02	;
+Lambda2	-0.178E+01	;
+Lambda3	0.340E+00	;
+Lambda4	-0.149E-01	;
+}
+H2O2
+{
+Lambda1	0.162E+01	;
+Lambda2	0.106E+01	;
+Lambda3	0.473E-01	;
+Lambda4	-0.536E-02	;
+}
+HO2
+{
+Lambda1	0.554E+01	;
+Lambda2	-0.590E+00	;
+Lambda3	0.263E+00	;
+Lambda4	-0.148E-01	;
+}
+HE
+{
+Lambda1	0.479E+01	;
+Lambda2	0.120E+01	;
+Lambda3	-0.875E-01	;
+Lambda4	0.456E-02	;
+}
+AR
+{
+Lambda1	-0.282E+01	;
+Lambda2	0.328E+01	;
+Lambda3	-0.342E+00	;
+Lambda4	0.148E-01	;
+}
+CO
+{
+Lambda1	0.623E+01	;
+Lambda2	-0.653E+00	;
+Lambda3	0.235E+00	;
+Lambda4	-0.125E-01	;
+}
+CO2
+{
+Lambda1	-0.109E+02	;
+Lambda2	0.579E+01	;
+Lambda3	-0.571E+00	;
+Lambda4	0.212E-01	;
+}
+HOCO
+{
+Lambda1	-0.981E+01	;
+Lambda2	0.520E+01	;
+Lambda3	-0.463E+00	;
+Lambda4	0.153E-01	;
+}
+HCO
+{
+Lambda1	0.368E+01	;
+Lambda2	-0.759E+00	;
+Lambda3	0.380E+00	;
+Lambda4	-0.237E-01	;
+}
+CH2O
+{
+Lambda1	0.507E+01	;
+Lambda2	-0.180E+01	;
+Lambda3	0.590E+00	;
+Lambda4	-0.358E-01	;
+}
