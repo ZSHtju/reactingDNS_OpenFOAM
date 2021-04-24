@@ -5,6 +5,7 @@
 cp -r 0.org 0
 cd utilities/chemkin1DSinCircleToFoam
 wclean;wmake
+cd ..;cd ..
 
 # Get application name
 application=`getApplication`
