@@ -38,16 +38,17 @@ solverPerformance::debug = 0;
 			}
 		}
    	//Hsi.correctBoundaryConditions();
-           vk += Hsi*mixAlpha*fvc::grad(Yi); //vk += -rho*Hai*(Diffi+Lei*mixAlpha/rho)*(fvc::grad(Yi));
-           diffsh += fvc::laplacian(mixAlpha*Hsi,Yi);
+	   vk += Hsi*mixAlpha*fvc::grad(Yi); //vk += -rho*Hai*(Diffi+Lei*mixAlpha/rho)*(fvc::grad(Yi));
+	   diffsh += fvc::laplacian(mixAlpha*Hsi,Yi);
 	   //volScalarField& Ymean = Y[i];
 	    fvScalarMatrix YEqn
             (
                 fvm::ddt(rho, Yi)
               + mvConvection->fvmDiv(phi, Yi)
-              - fvm::laplacian(mixAlpha, Yi)   //fvm::laplacian(rho*(Diffi+Lei*mixAlpha/rho), Yi)             
+              - fvm::laplacian(mixAlpha+turbulence->mut()/Sct, Yi)   //fvm::laplacian(rho*(Diffi+Lei*mixAlpha/rho), Yi)             
               ==
-                chemistry.RR(i)
+				reaction->R(Yi)
+			  + fvOptions(rho, Yi)
             );
             YEqn.relax();
 
@@ -63,7 +64,7 @@ solverPerformance::debug = 0;
 // for N2			
     Y[inertIndex] = Y[inertIndex] + scalar(1) - Yt;
     Y[inertIndex].max(0.0);        
-    chemistryhsSource = chemistry.Qdot()();
+    chemistryhsSource = reaction->Qdot();
 
 // Energy Equation	
 
@@ -82,10 +83,10 @@ solverPerformance::debug = 0;
             )
           : -dpdt
         )
-      - fvm::laplacian(mixAlpha, he)
+      - fvm::laplacian(mixAlpha+turbulence->mut()/Prt, he)
       + diffsh
      ==
-        chemistry.Qdot()()
+        reaction->Qdot()
       + fvc::div(vk)
       + fvOptions(rho, he)
     );

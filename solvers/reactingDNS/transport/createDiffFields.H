@@ -12,73 +12,12 @@ volScalarField MW
     dimensionedScalar("MW",dimensionSet (0,0,0,0,0,0,0),0.0)
 );
 
-volScalarField pUnit
-(
-    IOobject
-    (
-        "pUnit",
-        runTime.constant(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("pUnit",dimensionSet (1,-1,-2,0,0,0,0),1.0)
-);
-volScalarField TUnit
-(
-    IOobject
-    (
-        "TUnit",
-        runTime.constant(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("TUnit", dimTemperature, 1.0)
-);
-volScalarField DUnit
-(
-    IOobject
-    (
-        "DUnit",
-        runTime.constant(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("DUnit",dimensionSet (0,2,-1,0,0,0,0),1.0)
-);
+dimensionedScalar pUnit("pUnit",dimensionSet (1,-1,-2,0,0,0,0),1.0);
+dimensionedScalar TUnit("TUnit", dimTemperature, 1.0);
+dimensionedScalar DUnit("DUnit",dimensionSet (0,2,-1,0,0,0,0),1.0);
+dimensionedScalar lambdaUnit("lambdaUnit",dimensionSet (1,1,-3,-1,0,0,0),1.0);
+dimensionedScalar MuUnit("MuUnit",dimensionSet (1,-1,-1,0,0,0,0),1.0);
 
-volScalarField lambdaUnit
-(
-    IOobject
-    (
-        "lambdaUnit",
-        runTime.constant(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("lambdaUnit",dimensionSet (1,1,-3,-1,0,0,0),1.0)
-);
-
-volScalarField MuUnit
-(
-    IOobject
-    (
-        "MuUnit",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("MuUnit",dimensionSet (1,-1,-1,0,0,0,0),1.0)
-);
 
 volScalarField diffsh
 (
@@ -115,7 +54,7 @@ volScalarField chemistryhsSource
 
 
  
-PtrList<sutherlandTransport<species::thermo<janafThermo<perfectGas<specie>>,sensibleEnthalpy>>> specieData(Y.size());
+/* PtrList<sutherlandTransport<species::thermo<janafThermo<perfectGas<specie>>,sensibleEnthalpy>>> specieData(Y.size());
 forAll(specieData, i)
 {
 	specieData.set
@@ -128,7 +67,7 @@ forAll(specieData, i)
 		)
 	);
 } 
-
+ */
 
 //List<dimensionedScalar> Le(Y.size(),0.0);
 

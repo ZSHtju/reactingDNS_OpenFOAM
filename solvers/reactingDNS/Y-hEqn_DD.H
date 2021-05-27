@@ -60,12 +60,13 @@ diffsh *= 0;
 		(
 			fvm::ddt(rho, Yi)
 		  + mvConvection->fvmDiv(phi, Yi)
-		  - fvm::laplacian(rho*Diffi, Yi)   //fvm::laplacian(rho*(Diffi+Lei*mixAlpha/rho), Yi)
+		  - fvm::laplacian(rho*Diffi+turbulence->mut()/Sct, Yi)   //fvm::laplacian(rho*(Diffi+Lei*mixAlpha/rho), Yi)
 		  + mvConvection->fvmDiv(phiUc,Yi)              
 		  - fvc::laplacian(rho*Diffi*Yi/MW,MW)
 		  - fvc::laplacian(rho*Diffi*ThermalDiff*Yi/(T*(Xi+SMALL)),T) // soret effect
 		  ==
-			chemistry.RR(i)
+			reaction->R(Yi)
+		  + fvOptions(rho, Yi)
 		);
 		YEqn.relax();
 
@@ -81,7 +82,7 @@ diffsh *= 0;
 // for N2			
     Y[inertIndex] = Y[inertIndex] + scalar(1) - Yt;
     Y[inertIndex].max(0.0);        
-    chemistryhsSource = chemistry.Qdot()();
+    chemistryhsSource = reaction->Qdot();
 
 // Energy Equation	
 
@@ -101,10 +102,10 @@ diffsh *= 0;
 			)
 		  : -dpdt
 		)
-	  - fvm::laplacian(mixAlpha, he)
+	  - fvm::laplacian(mixAlpha+turbulence->mut()/Prt, he)
 	  + diffsh
 	 ==
-		chemistry.Qdot()()
+        reaction->Qdot()
 	  + fvc::div(vk)
 	  + fvOptions(rho, he)
 	);

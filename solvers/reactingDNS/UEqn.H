@@ -6,7 +6,7 @@ tmp<fvVectorMatrix> tUEqn
 (
     fvm::ddt(rho, U) + fvm::div(phi, U)
   + MRF.DDt(rho, U)
-  - fvm::laplacian(mixMu,U)
+  - fvm::laplacian(mixMu+turbulence->mut(),U)
   - fvc::div((mixMu*dev2(fvc::grad(U)().T())))
  ==  
     fvOptions(rho, U)

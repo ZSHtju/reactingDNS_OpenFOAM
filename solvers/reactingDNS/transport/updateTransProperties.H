@@ -6,14 +6,14 @@ DiffError *= 0 ;
 MW *= 0;
 forAll(Y,i)
 {
-    MW += Y[i]/spInfo[i][4];
+    MW += Y[i]/composition.Wi(i);
 }
 MW = 1/MW;
 // get species mole fraction
 forAll(Y,i)
 {
     
-    X[i] = Y[i]*MW/spInfo[i][4];
+    X[i] = Y[i]*MW/composition.Wi(i);
 }
 
 if(differentialDiffusion)
@@ -85,7 +85,7 @@ forAll(Y,i)
 			{
 			 label k = Y.size()*n+m-0.5*n*(n+1);
 			 //d[k] = 1e-4 * exp(Diff1[k]*pow(log(T/TUnit),0) + Diff2[k]*pow(log(T/TUnit),1) + Diff3[k]*pow(log(T/TUnit),2) + Diff4[k]*pow(log(T/TUnit),3)) / (p / 101325 /pUnit);// 1e-4 cm2/s to m2/s   p 1 dyne/cm2 = 0.1 Pa //
-			 DiNumerator += (Xj+1e-12) * spInfo[j][4];
+			 DiNumerator += (Xj+1e-12) * composition.Wi(j);
 			 DiDenominator += MW*(Xj+1e-12)/d[k];
 			} 
 		}
@@ -108,7 +108,7 @@ forAll(Y,i)
 	 {
 		volScalarField& Xz = X[z];
 		volScalarField& Muz = Mu[z];
-		yhi += Xz*0.353553*pow(1.0+Foam::sqrt(Mui/Muz)*pow025(spInfo[z][4]/spInfo[i][4]),2)/Foam::sqrt(1.0+spInfo[i][4]/spInfo[z][4]);
+		yhi += Xz*0.353553*pow(1.0+Foam::sqrt(Mui/Muz)*pow025(composition.Wi(z)/composition.Wi(i)),2)/Foam::sqrt(1.0+composition.Wi(i)/composition.Wi(z));
 	 }
      mixMu += (Xi)*Mui/yhi;
 	 mixLambdaA += Xi*Lambda[i];
