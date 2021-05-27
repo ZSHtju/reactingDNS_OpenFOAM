@@ -30,7 +30,7 @@ boundaryField
 /*
         type            totalPressure;
         p0              $internalField;
-*/
+
         type            waveTransmissive;
         field           p;
         pis             thermo:psi;
@@ -38,6 +38,9 @@ boundaryField
         fieldInf        101325;
         lInf            1;
         value           $internalField;
+*/
+        type            fixedValue;
+        value           uniform 101325;
     }
     wall
     {

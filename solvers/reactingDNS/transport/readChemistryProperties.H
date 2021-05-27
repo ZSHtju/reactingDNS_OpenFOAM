@@ -15,5 +15,5 @@ IOdictionary chemistryProperties
 
 Switch differentialDiffusion(chemistryProperties.lookupOrDefault("differentialDiffusion",true));
 Switch thermalDiffusion(chemistryProperties.lookupOrDefault("thermalDiffusion",false));
-dimensionedScalar Prt (chemistryProperties.lookupOrDefault("Prt",0.7));
-dimensionedScalar Sct (chemistryProperties.lookupOrDefault("Sct",0.7));
+dimensionedScalar Prt(chemistryProperties.lookup("Prt"));
+dimensionedScalar Sct(chemistryProperties.lookup("Sct"));
