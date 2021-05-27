@@ -32,7 +32,7 @@ EulerImplicitCoeffs
 
 odeCoeffs
 {
-    solver          RKCK45;
+    solver          seulex;
     absTol          1e-12;
     relTol          1e-1;
 }
@@ -42,3 +42,6 @@ odeCoeffs
 // ************************************************************************* //
 differentialDiffusion on;
 thermalDiffusion off;
+
+Prt  Prt [0 0 0 0 0] 0.7;
+Sct  Sct [0 0 0 0 0] 0.7;
