@@ -120,7 +120,7 @@ solvers
     }
 
 
-    "(h|hSF|Yi|YSoot|PDSoot)"
+    "(he|h|e|Yi)"
     {
         solver          PBiCGStab;
         preconditioner  DILU;
@@ -128,9 +128,9 @@ solvers
         relTol          0.01;
     }
 
-    "(h|hSF|Yi|YSoot|PDSoot)Final"
+    "(he|h|e|Yi)Final"
     {
-        $h;
+        $he;
         tolerance       1e-09;
         relTol          0;
     }
