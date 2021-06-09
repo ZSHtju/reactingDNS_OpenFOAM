@@ -1,0 +1,156 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+type surfaces;
+libs ("libsampling.so");
+
+interpolationScheme cellPoint;
+
+surfaceFormat       foamFile;
+
+formatOptions
+{
+    ensight
+    {
+        format  ascii;
+    }
+}
+
+fields         (CO chemistryhsSource H H2 O O2 OH HO2 H2O2 p T rho U CURL FDS FSR);        
+//(CURL FDS FSR);
+/*********************************************
+sets
+(
+    data
+    {
+        type    uniform;
+        libs ("libsampling.so");
+        axis    distance;
+        //start   (0 0 0);
+        //end     (0.1548 0 0);
+	//end     (3.0 0 0);
+        //nPoints 1548;
+	//nPoints 5000;
+    }
+);
+*********************************************/
+surfaces
+(
+/*
+    constantPlane
+    {
+        type            plane;    // always triangulated
+        basePoint       (0.0501 0.0501 0.005);
+        normalVector    (0.1 0.1 1);
+
+        //- Optional: restrict to a particular zone
+        // zone        zone1;
+
+        //- Optional: do not triangulate (only for surfaceFormats that support
+        //            polygons)
+        //triangulate     false;
+    }
+
+    interpolatedPlane
+    {
+        type            plane;    // always triangulated
+        // make plane relative to the coordinateSystem (Cartesian)
+        coordinateSystem
+        {
+            origin      (0.0501 0.0501 0.005);
+        }
+        basePoint       (0 0 0);
+        normalVector    (0.1 0.1 1);
+        interpolate     true;
+    }
+
+    walls_constant
+    {
+        type            patch;
+        patches         ( ".*Wall.*" );
+        // Optional: whether to leave as faces (=default) or triangulate
+        // triangulate     false;
+    }
+
+    walls_interpolated
+    {
+        type            patch;
+        patches         ( ".*Wall.*" );
+        interpolate     true;
+        // Optional: whether to leave as faces (=default) or triangulate
+        // triangulate     false;
+    }
+
+    nearWalls_interpolated
+    {
+        // Sample cell values off patch. Does not need to be the near-wall
+        // cell, can be arbitrarily far away.
+        type            patchInternalField;
+        patches         ( ".*Wall.*" );
+        interpolate     true;
+
+
+        // Optional: specify how to obtain sampling points from the patch
+        //           face centres (default is 'normal')
+        //
+        //  //- Specify distance to offset in normal direction
+        offsetMode  normal;
+        distance    0.1;
+        //
+        //  //- Specify single uniform offset
+        //  offsetMode  uniform;
+        //  offset      (0 0 0.0001);
+        //
+        //  //- Specify offset per patch face
+        //  offsetMode  nonuniform;
+        //  offsets     ((0 0 0.0001) (0 0 0.0002));
+
+
+        // Optional: whether to leave as faces (=default) or triangulate
+        // triangulate     false;
+    }
+
+    interpolatedIso
+    {
+        // Iso surface for interpolated values only
+        type            isoSurface;    // always triangulated
+        isoField        C2H5OH;
+        isoValue        0.005;
+        interpolate     true;
+
+        //zone            ABC;          // Optional: zone only
+        //exposedPatchName fixedWalls;  // Optional: zone only
+
+        // regularise      false;    // Optional: do not simplify
+        // mergeTol        1e-10;    // Optional: fraction of mesh bounding box
+                                     // to merge points (default=1e-6)
+    }
+*/
+    constantIso
+    {
+        // Iso surface for constant values.
+        // Triangles guaranteed not to cross cells.
+        type            isoSurfaceCell;    // always triangulated
+        isoField        O2;
+        isoValue        0.1316729;
+        interpolate     false;
+        regularise      false;              // do not simplify
+        //mergeTol        1e-10;    // Optional: fraction of mesh bounding box
+                                     // to merge points (default=1e-6)
+    }
+);
+
+// ************************************************************************* //

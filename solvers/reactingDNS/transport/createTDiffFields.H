@@ -30,3 +30,17 @@ volScalarField TDRatio_H2
            mesh,
            dimensionedScalar("TDRatio_H2",dimensionSet (0,0,0,0,0,0,0),0.0)
 );
+
+volVectorField DiffErrors
+(
+           IOobject
+           (
+              "DiffErrors",
+              runTime.timeName(),
+              mesh,
+              IOobject::NO_READ,
+              IOobject::NO_WRITE
+           ),
+           mesh,
+           dimensionedVector("DiffErrors",dimensionSet (1,-2,-1,0,0,0,0),vector::zero)
+);

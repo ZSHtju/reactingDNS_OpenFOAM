@@ -6,11 +6,11 @@ autoPtr<psiReactionThermo> pThermo(psiReactionThermo::New(mesh));
 psiReactionThermo& thermo = pThermo();
 thermo.validate(args.executable(), "h", "e");
 
-autoPtr< BasicChemistryModel<psiReactionThermo>> pChemistry
+/* autoPtr< BasicChemistryModel<psiReactionThermo>> pChemistry
 (
   BasicChemistryModel<psiReactionThermo>::New(thermo)
 );
-
+ */
 basicSpecieMixture& composition = thermo.composition();
 PtrList<volScalarField>& Y = composition.Y();
 
@@ -74,13 +74,13 @@ autoPtr<psiReactionThermophysicalTransportModel> thermophysicalTransport
     psiReactionThermophysicalTransportModel::New(turbulence(), thermo)
 );
 
-/*
+
 Info<< "Creating reaction model\n" << endl;
 autoPtr<CombustionModel<psiReactionThermo>> reaction
 (
     CombustionModel<psiReactionThermo>::New(thermo, turbulence())
 );
-*/
+
 
 Info<< "Creating field dpdt\n" << endl;
 volScalarField dpdt
@@ -108,7 +108,7 @@ forAll(Y, i)
 fields.add(thermo.he());
 
 
-thermo.correct();
+//thermo.correct();
 
 #include "createMRF.H"
 #include "createFvOptions.H"

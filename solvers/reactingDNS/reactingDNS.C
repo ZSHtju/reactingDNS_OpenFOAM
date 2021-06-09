@@ -44,11 +44,7 @@ Description
 #include "fluidThermoMomentumTransportModel.H"
 #include "psiReactionThermophysicalTransportModel.H"
 #include "psiReactionThermo.H"
-#include "BasicChemistryModel.H"
-#include "chemistrySolver.H"
-//#include "thermoPhysicsTypes.H"
-#include "basicSpecieMixture.H"
-#include "multiComponentMixture.H"
+#include "CombustionModel.H"
 #include "multivariateScheme.H"
 #include "pimpleControl.H"
 #include "pressureControl.H"
@@ -56,7 +52,7 @@ Description
 #include "localEulerDdtScheme.H"
 #include "fvcSmooth.H"
 
-#include "specie.H"
+/* #include "specie.H"
 #include "perfectGas.H"
 #include "incompressiblePerfectGas.H"
 #include "perfectFluid.H"
@@ -80,7 +76,7 @@ Description
 #include "OFstream.H"
 #include "Switch.H"
 #include "Random.H"
-#include "mathematicalConstants.H"
+#include "mathematicalConstants.H" */
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 int main(int argc, char *argv[])
@@ -106,8 +102,11 @@ int main(int argc, char *argv[])
     turbulence->validate();
 
 
-	#include "compressibleCourantNo.H"
-	#include "setInitialDeltaT.H"
+    if (!LTS)
+    {
+        #include "compressibleCourantNo.H"
+        #include "setInitialDeltaT.H"
+    }
 
 
 
@@ -120,16 +119,21 @@ int main(int argc, char *argv[])
 	#include "readThermalDiff.H"
     #include "readSpeciesLambda.H"
     #include "readSpeciesMu.H"
-    #include "getElementData.H"
+    //#include "getElementData.H"
 
     while (runTime.run())
     {
         #include "readTimeControls.H"
 
-		#include "compressibleCourantNo.H"
-		#include "setDeltaT.H"
-
-
+        if (LTS)
+        {
+            #include "setRDeltaT.H"
+        }
+        else
+        {
+            #include "compressibleCourantNo.H"
+            #include "setDeltaT.H"
+        }
 
         nStep +=1;
         runTime++;
@@ -144,7 +148,8 @@ int main(int argc, char *argv[])
             #include "updateTransProperties.H"
             #include "UEqn.H"
 
-			chemistry.solve(runTime.deltaT().value());
+			//chemistry.solve(runTime.deltaT().value());
+			reaction->correct();
 			if(differentialDiffusion)
 			{
 				#include "Y-hEqn_DD.H"

@@ -1,4 +1,4 @@
-label  nSpecies = composition.Y().size();
+/* label  nSpecies = composition.Y().size();
 List<List<specieElement>> specieComp(Y.size());
 speciesTable speciesTab = thermo.composition().species();
 const HashTable<List<specieElement>>& specComp = dynamic_cast<const multiComponentMixture<sutherlandTransport<species::thermo<janafThermo<perfectGas<specie>>,sensibleEnthalpy>>>&>(thermo).specieComposition();
@@ -37,3 +37,4 @@ forAll(Y, i)
     Info << composition.Wi(i) << endl;
     spInfo[i][4] = composition.Wi(i);
 }
+ */

@@ -12,27 +12,45 @@ label tmpDebug = solverPerformance::debug;
 solverPerformance::debug = 0; 
 vk *= 0;
 diffsh *= 0;
+DiffError *= 0;
+DiffErrors *= 0;
 // step : advection-diffusoin
 	//label inertIndex = -1;
+	forAll(Y,i)
+	{
+		volScalarField& Yi = Y[i];
+		volScalarField& Xi = X[i];
+		DiffError += (rho*Diff[i]*fvc::grad(Yi) + Yi*rho*Diff[i]*fvc::grad(MW)/MW);
+		if(Y[i].name() == "H")
+		{
+		   DiffErrors +=  (-rho*Diff[i]*TDRatio_H*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
+		}
+		else if(Y[i].name() == "H2")
+		{
+		   DiffErrors +=  (-rho*Diff[i]*TDRatio_H2*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
+		}		  
+	}
 	volScalarField Yt(0.0*Y[0]);
     surfaceScalarField  phiUc = linearInterpolate(DiffError) & mesh.Sf();
+	surfaceScalarField  phiUs = linearInterpolate(DiffErrors) & mesh.Sf();
     for(label i=0; i < Y.size(); i++)
     {
 		volScalarField& Yi = Y[i];
 		volScalarField& Xi = X[i];
 		volScalarField& Diffi = Diff[i];
-		volScalarField  ThermalDiff = TDRatio_H*0;
+		volScalarField  ThermalDiffRatio = TDRatio_H*0;
+		
 		if(Y[i].name() == "H")
 		{
-		   ThermalDiff = TDRatio_H;
+		   ThermalDiffRatio = TDRatio_H;
 		}
 		else if(Y[i].name() == "H2")
 		{
-		   ThermalDiff = TDRatio_H2;
+		   ThermalDiffRatio = TDRatio_H2;
 		}		   
 		else
 		{
-		   ThermalDiff *= 0;
+		   ThermalDiffRatio *= 0;
 		}			   
         
 	   for(label icell = 0; icell < rho.size(); icell++)
@@ -53,19 +71,22 @@ diffsh *= 0;
 				HsiPatch[facei] = composition.Hs(i, pp[facei], Tp[facei]);
 			}
 		}
-		vk += Hsi*(rho*Diffi*fvc::grad(Yi)+Yi*rho*Diffi*fvc::grad(MW)/MW-Yi*DiffError); //vk += -rho*Hai*(Diffi+Lei*mixAlpha/rho)*(fvc::grad(Yi));
+		
+		vk += Hsi*(rho*Diffi*fvc::grad(Yi)-Yi*rho*Diffi*fvc::grad(MW)/MW+(-rho*Diff[i]*ThermalDiffRatio*fvc::grad(T)*Yi/(T*(Xi+SMALL)))-Yi*DiffError-Yi*DiffErrors);		
 		diffsh += fvc::laplacian(mixAlpha*Hsi,Yi);// override temperature to enthalpy
-   
+			
 		fvScalarMatrix YEqn
 		(
 			fvm::ddt(rho, Yi)
 		  + mvConvection->fvmDiv(phi, Yi)
-		  - fvm::laplacian(rho*Diffi, Yi)   //fvm::laplacian(rho*(Diffi+Lei*mixAlpha/rho), Yi)
-		  + mvConvection->fvmDiv(phiUc,Yi)              
+		  - fvm::laplacian(rho*Diffi+turbulence->mut()/Sct, Yi)   //fvm::laplacian(rho*(Diffi+Lei*mixAlpha/rho), Yi)
+		  + mvConvection->fvmDiv(phiUc,Yi)     
+		  + mvConvection->fvcDiv(phiUs,Yi) 		  
 		  - fvc::laplacian(rho*Diffi*Yi/MW,MW)
-		  - fvc::laplacian(rho*Diffi*ThermalDiff*Yi/(T*(Xi+SMALL)),T) // soret effect
+		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T) // soret effect  Yi/(T*(Xi+SMALL)),T)
 		  ==
-			chemistry.RR(i)
+			reaction->R(Yi)
+		  + fvOptions(rho, Yi)
 		);
 		YEqn.relax();
 
@@ -81,7 +102,7 @@ diffsh *= 0;
 // for N2			
     Y[inertIndex] = Y[inertIndex] + scalar(1) - Yt;
     Y[inertIndex].max(0.0);        
-    chemistryhsSource = chemistry.Qdot()();
+    chemistryhsSource = reaction->Qdot();
 
 // Energy Equation	
 
@@ -101,10 +122,10 @@ diffsh *= 0;
 			)
 		  : -dpdt
 		)
-	  - fvm::laplacian(mixAlpha, he)
+	  - fvm::laplacian(mixAlpha+turbulence->mut()/Prt, he)
 	  + diffsh
 	 ==
-		chemistry.Qdot()()
+        reaction->Qdot()
 	  + fvc::div(vk)
 	  + fvOptions(rho, he)
 	);
@@ -113,7 +134,7 @@ diffsh *= 0;
 
 	fvOptions.constrain(EEqn);
 
-	EEqn.solve();
+	EEqn.solve("he");
 
 	fvOptions.correct(he);
 

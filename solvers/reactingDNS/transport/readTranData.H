@@ -46,7 +46,7 @@ forAll(Y,i)
 {
 	if(!foundSpecies[i])
 	{
-		Info << " species trandata for " << Y[i].name() << " is not found in constant/trandat"<<	FatalErrorIn( "something wrong in your constant/tranda") << abort(FatalError);	
+		Info << " species trandata for " << Y[i].name() << " is not found in constant/trandat "<<	FatalErrorIn( "something wrong in your constant/trandat") << abort(FatalError);	
 	}		
 }
 // group the species that have the same trandata
@@ -99,11 +99,3 @@ forAll(groupSpecies,i)
 	}
 }
 Info << ")" << endl;
-
-
-
-
-
-
-
-
