@@ -29,6 +29,10 @@ Attention:
 
 When the species name starts with number in trandat, you need to change it to word by add double quotation marks, e.g. 1H2 to "1H2".
 
+Please ensure there is no extra useless lines at the end of the tran.out when you use the writetofoam.
+
+Please ensure you have a blank line at the beginning of the trandat when you put it into the case.
+
 Current method is simple and can be easily implemented in other solvers in OpenFOAM. When you are using this solver to publish paper, please kindly consider to cite following papers, in which n-heptane/air laminar premixed flames in a low-temperature ignition regime [2], spherical laminar premixed flame with intrinsic flame instability [3], turbulent flame propagation and ignition [4, 5] and ammonia/methane/air premixed laminar burner flame [6] were stuided.
 
 [1] Kee, R. J.; Dixon-Lewis, G.; Warnatz, J.; Coltrin, M. E.; Miller, J. A. A Fortran com-puter code package for the evaluation of gas-phase multicomponent transport properties.Sandia National Laboratories Report SAND86-8246, 1986, 13, 80401–1887.
