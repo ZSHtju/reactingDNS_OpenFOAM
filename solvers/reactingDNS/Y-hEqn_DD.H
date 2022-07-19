@@ -13,7 +13,6 @@ solverPerformance::debug = 0;
 vk *= 0;
 diffsh *= 0;
 DiffError *= 0;
-DiffErrors *= 0;
 // step : advection-diffusoin
 	//label inertIndex = -1;
 	forAll(Y,i)
@@ -78,7 +77,7 @@ DiffErrors *= 0;
 			}
 		}
 		
-		vk += Hsi*(rho*Diffi*fvc::grad(Yi)-Yi*rho*Diffi*fvc::grad(MW)/MW+(-rho*Diff[i]*ThermalDiffRatio*fvc::grad(T)*Yi/(T*(Xi+SMALL)))-Yi*DiffError-Yi*DiffErrors);		
+		vk += Hsi*(rho*Diffi*fvc::grad(Yi)-Yi*rho*Diffi*fvc::grad(MW)/MW+(-rho*Diff[i]*ThermalDiffRatio*fvc::grad(T)*Yi/(T*(Xi+SMALL)))-Yi*DiffError);		
 		diffsh += fvc::laplacian(mixAlpha*Hsi,Yi);// override temperature to enthalpy
 			
 		fvScalarMatrix YEqn

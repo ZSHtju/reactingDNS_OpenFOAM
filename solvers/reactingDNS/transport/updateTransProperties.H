@@ -12,7 +12,6 @@ MW = 1/MW;
 // get species mole fraction
 forAll(Y,i)
 {
-    
     X[i] = Y[i]*MW/composition.Wi(i);
 }
 
@@ -72,7 +71,7 @@ forAll(Y,i)
 //volScalarField& 	Xi = X[i];
 	if(differentialDiffusion)
 	{
-		volScalarField& 	Yi = Y[i];
+		//volScalarField& 	Yi = Y[i];
 		DiNumerator *= 0 ;//reset to 0
 		DiDenominator *= 0;
 		for (label j = 0; j< Y.size(); j++)
