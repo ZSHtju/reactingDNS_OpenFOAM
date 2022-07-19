@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
 		Info<< "Reading  1D Flame data file" << endl;
 
 		Info<< "Please make sure the scalar in SI unit" << endl;
-		ifstream fileRow("1DFlame.dat");
+		ifstream fileRow("./constant/1DFlame.dat");
 		string tmp;
 		label count = 0;
 
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 			if(tmp.size() > 0)
 			count++;
 		}
-		label NN = count;
+		label NN = count-1;//skip the first line
 		Info << count << endl;
 		scalarList d(NN,0.);
 		scalarList TT(NN,0.);
@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
 			);
 		}
 		
-		ifstream myfile("1DFlame.dat");
+		ifstream myfile("./constant/1DFlame.dat");
 		if (myfile.fail())
 		{
 			Info << " file not found, the name of the file shoule be 1DFlame.dat" << endl;
@@ -126,6 +126,7 @@ int main(int argc, char *argv[])
 		else
 		{
 			char sline[300];
+			myfile.getline(sline,300); //skip the first line
 			for(label i = 0; i < NN ; i++)
 			{
 				for(label j = 0; j < (Y.size()+2); j++)
@@ -187,7 +188,7 @@ int main(int argc, char *argv[])
 				r = std::abs((mesh.C()[celli] - startPoint.value())&flameNormalDirection.value());
 			}
 
-			scalar delta_r = ((d[NN-1]-d[1])*amplitudeFactor)*Foam::sin((mesh.C()[celli]&flameNormalDirection.value()) *frequency/(d[NN-1]-d[0]));
+			scalar delta_r = ((d[NN-1]-d[1])*amplitudeFactor)*Foam::sin((mesh.C()[celli]&flameFluctuationDirection.value()) *frequency/(d[NN-1]-d[0]));
 			
 			r1 = r1 + delta_r;
 			r2 = r2 + delta_r;
