@@ -161,7 +161,8 @@ int main(int argc, char *argv[])
 		);
 
 		word type(initialFlameProperties.lookup("type"));
-
+		
+		Switch reverse(initialFlameProperties.lookupOrDefault("reverse",false));
 		dimensionedVector startPoint(initialFlameProperties.lookup("startPoint"));			
 		scalar amplitudeFactor = readScalar(initialFlameProperties.lookup("amplitudeFactor"));
 		scalar frequency= readScalar(initialFlameProperties.lookup("frequency"));
@@ -173,6 +174,7 @@ int main(int argc, char *argv[])
 		dimensionedVector flameFluctuationDirection(initialFlameProperties.lookup("flameFluctuationDirection"));
 		dimensionedScalar distance(initialFlameProperties.lookup("distance"));	
 		
+
 		forAll(mesh.C(),celli)
 		{
 			
@@ -189,76 +191,154 @@ int main(int argc, char *argv[])
 			
 			r1 = r1 + delta_r;
 			r2 = r2 + delta_r;
-
-			if (r < r1)
+			
+			if(!reverse)
 			{
-				T[celli] = TT[0];
-				label inertIndex1 = -1;
-				scalar Yt = 0;
-				forAll(Y,j)
+				if (r < r1)
 				{
-					if(Y[j].name() != inertSpecie)
+					T[celli] = TT[0];
+					label inertIndex1 = -1;
+					scalar Yt = 0;
+					forAll(Y,j)
 					{
-						Y[j][celli] =  YY[j+2][0];
-						Yt += Y[j][celli];
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] =  YY[j+2][0];
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex1 = j;
+						}
 					}
-					else
-					{
-						inertIndex1 = j;
-					}
+					Y[inertIndex1][celli] = 1 - Yt;
 				}
-				Y[inertIndex1][celli] = 1 - Yt;
-			}
-			else if(r>=r1 && r<=r2)
-			{
-				label MM = 0;
-				for(label i = 0; i < NN-1; i++)
+				else if(r>=r1 && r<=r2)
 				{
-					if((r-r1) >= (d[i]-d[1]) && (r-r1) <= (d[i+1]-d[1]))
+					label MM = 0;
+					for(label i = 0; i < NN-1; i++)
 					{
-							MM = i;
-							break;
+						if((r-r1) >= (d[i]-d[1]) && (r-r1) <= (d[i+1]-d[1]))
+						{
+								MM = i;
+								break;
+						}
 					}
-				}
 
-				T[celli] = TT[MM]+(TT[MM+1]-TT[MM])*(r-r1-d[MM]+d[1])/(d[MM+1]-d[MM]);
-				scalar Yt = 0;
-				label inertIndex2 = -1;
-				forAll(Y,j)
-				{
-					if(Y[j].name() != inertSpecie)
+					T[celli] = TT[MM]+(TT[MM+1]-TT[MM])*(r-r1-d[MM]+d[1])/(d[MM+1]-d[MM]);
+					scalar Yt = 0;
+					label inertIndex2 = -1;
+					forAll(Y,j)
 					{
-						Y[j][celli] = YY[j+2][MM]+(YY[j+2][MM+1]-YY[j+2][MM])*(r-r1-d[MM]+d[1])/(d[MM+1]-d[MM]);
-						Yt += Y[j][celli];
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] = YY[j+2][MM]+(YY[j+2][MM+1]-YY[j+2][MM])*(r-r1-d[MM]+d[1])/(d[MM+1]-d[MM]);
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex2 = j;
+						}
 					}
-					else
-					{
-						inertIndex2 = j;
-					}
+					Y[inertIndex2][celli] = 1 - Yt;
 				}
-				Y[inertIndex2][celli] = 1 - Yt;
+				else
+				{
+					T[celli] = TT[NN-1];
+					label inertIndex1 = -1;
+					scalar Yt = 0;
+					forAll(Y,j)
+					{
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] =  YY[j+2][NN-1];
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex1 = j;
+						}
+					}
+					Y[inertIndex1][celli] = 1 - Yt;				
+				}
 			}
 			else
 			{
-				T[celli] = TT[NN-1];
-				label inertIndex1 = -1;
-				scalar Yt = 0;
-				forAll(Y,j)
+				if (r < r1)
 				{
-					if(Y[j].name() != inertSpecie)
+					T[celli] = TT[NN-1];
+					label inertIndex1 = -1;
+					scalar Yt = 0;
+					forAll(Y,j)
 					{
-						Y[j][celli] =  YY[j+2][NN-1];
-						Yt += Y[j][celli];
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] =  YY[j+2][NN-1];
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex1 = j;
+						}
 					}
-					else
-					{
-						inertIndex1 = j;
-					}
+					Y[inertIndex1][celli] = 1 - Yt;
 				}
-				Y[inertIndex1][celli] = 1 - Yt;				
+				else if(r>=r1 && r<=r2)
+				{
+					label MM = 0;
+					for(label i = 0; i < NN-1; i++)
+					{
+						if( (r2-r) >= (d[i]-d[1]) )
+						{
+							if ((r2-r) <= (d[i+1])-d[1] )
+							{
+								MM = i;
+								break;
+							}
+						}
+					}
+					T[celli] = TT[MM]+(TT[MM+1]-TT[MM])*(r2-r-d[MM]+d[1])/(d[MM+1]-d[MM]);
+					scalar Yt = 0;
+					label inertIndex2 = -1;
+					forAll(Y,j)
+					{
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] = YY[j+2][MM]+(YY[j+2][MM+1]-YY[j+2][MM])*(r2-r-d[MM]+d[1])/(d[MM+1]-d[MM]);
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex2 = j;
+						}
+					}
+					Y[inertIndex2][celli] = 1 - Yt;
+				}
+				else
+				{
+					T[celli] = TT[0];
+					label inertIndex1 = -1;
+					scalar Yt = 0;
+					forAll(Y,j)
+					{
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] =  YY[j+2][0];
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex1 = j;
+						}
+					}
+					Y[inertIndex1][celli] = 1 - Yt;				
+				}				
 			}
 		}
+
 	}
+	
+	
 	if(type == "circle")
 	{
 		dimensionedScalar radius(initialFlameProperties.lookup("radius"));
@@ -306,77 +386,149 @@ int main(int argc, char *argv[])
 			scalar delta_r = ((d[NN-2]-d[1])*amplitudeFactor)*Foam::sin(y*frequency*2/(r1+r2));
 			r1 = r1 + delta_r;
 			r2 = r2 + delta_r;
-
-			if (r < r1)
+			if(!reverse)
 			{
-				T[celli] = TT[NN-1];
-				label inertIndex1 = -1;
-				scalar Yt = 0;
-				forAll(Y,j)
+				if (r < r1)
 				{
-					if(Y[j].name() != inertSpecie)
+					T[celli] = TT[NN-1];
+					label inertIndex1 = -1;
+					scalar Yt = 0;
+					forAll(Y,j)
 					{
-						Y[j][celli] =  YY[j+2][NN-1];
-						Yt += Y[j][celli];
-					}
-					else
-					{
-						inertIndex1 = j;
-					}
-				}
-				Y[inertIndex1][celli] = 1 - Yt;
-			}
-			else if(r>=r1 && r<=r2)
-			{
-				label MM = 0;
-				for(label i = 0; i < NN-1; i++)
-				{
-					if( (r2-r) >= (d[i]-d[1]) )
-					{
-						if ((r2-r) <= (d[i+1])-d[1] )
+						if(Y[j].name() != inertSpecie)
 						{
-							MM = i;
-							break;
+							Y[j][celli] =  YY[j+2][NN-1];
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex1 = j;
 						}
 					}
+					Y[inertIndex1][celli] = 1 - Yt;
 				}
-				T[celli] = TT[MM]+(TT[MM+1]-TT[MM])*(r2-r-d[MM]+d[1])/(d[MM+1]-d[MM]);
-				scalar Yt = 0;
-				label inertIndex2 = -1;
-				forAll(Y,j)
+				else if(r>=r1 && r<=r2)
 				{
-					if(Y[j].name() != inertSpecie)
+					label MM = 0;
+					for(label i = 0; i < NN-1; i++)
 					{
-						Y[j][celli] = YY[j+2][MM]+(YY[j+2][MM+1]-YY[j+2][MM])*(r2-r-d[MM]+d[1])/(d[MM+1]-d[MM]);
-						Yt += Y[j][celli];
+						if( (r2-r) >= (d[i]-d[1]) )
+						{
+							if ((r2-r) <= (d[i+1])-d[1] )
+							{
+								MM = i;
+								break;
+							}
+						}
 					}
-					else
+					T[celli] = TT[MM]+(TT[MM+1]-TT[MM])*(r2-r-d[MM]+d[1])/(d[MM+1]-d[MM]);
+					scalar Yt = 0;
+					label inertIndex2 = -1;
+					forAll(Y,j)
 					{
-						inertIndex2 = j;
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] = YY[j+2][MM]+(YY[j+2][MM+1]-YY[j+2][MM])*(r2-r-d[MM]+d[1])/(d[MM+1]-d[MM]);
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex2 = j;
+						}
 					}
+					Y[inertIndex2][celli] = 1 - Yt;
 				}
-				Y[inertIndex2][celli] = 1 - Yt;
+				else
+				{
+					T[celli] = TT[0];
+					label inertIndex1 = -1;
+					scalar Yt = 0;
+					forAll(Y,j)
+					{
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] =  YY[j+2][0];
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex1 = j;
+						}
+					}
+					Y[inertIndex1][celli] = 1 - Yt;				
+				}
 			}
 			else
 			{
-				T[celli] = TT[0];
-				label inertIndex1 = -1;
-				scalar Yt = 0;
-				forAll(Y,j)
+				if (r < r1)
 				{
-					if(Y[j].name() != inertSpecie)
+					T[celli] = TT[0];
+					label inertIndex1 = -1;
+					scalar Yt = 0;
+					forAll(Y,j)
 					{
-						Y[j][celli] =  YY[j+2][0];
-						Yt += Y[j][celli];
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] =  YY[j+2][0];
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex1 = j;
+						}
 					}
-					else
-					{
-						inertIndex1 = j;
-					}
+					Y[inertIndex1][celli] = 1 - Yt;
 				}
-				Y[inertIndex1][celli] = 1 - Yt;				
+				else if(r>=r1 && r<=r2)
+				{
+					label MM = 0;
+					for(label i = 0; i < NN-1; i++)
+					{
+						if((r-r1) >= (d[i]-d[1]) && (r-r1) <= (d[i+1]-d[1]))
+						{
+								MM = i;
+								break;
+						}
+					}
+
+					T[celli] = TT[MM]+(TT[MM+1]-TT[MM])*(r-r1-d[MM]+d[1])/(d[MM+1]-d[MM]);
+					scalar Yt = 0;
+					label inertIndex2 = -1;
+					forAll(Y,j)
+					{
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] = YY[j+2][MM]+(YY[j+2][MM+1]-YY[j+2][MM])*(r-r1-d[MM]+d[1])/(d[MM+1]-d[MM]);
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex2 = j;
+						}
+					}
+					Y[inertIndex2][celli] = 1 - Yt;
+				}
+				else
+				{
+					T[celli] = TT[NN-1];
+					label inertIndex1 = -1;
+					scalar Yt = 0;
+					forAll(Y,j)
+					{
+						if(Y[j].name() != inertSpecie)
+						{
+							Y[j][celli] =  YY[j+2][NN-1];
+							Yt += Y[j][celli];
+						}
+						else
+						{
+							inertIndex1 = j;
+						}
+					}
+					Y[inertIndex1][celli] = 1 - Yt;				
+				}								
 			}
-		}				
+		}			
 	}
 		forAll(Y,i)
 		{

@@ -94,7 +94,6 @@ forAll(groupSpecies,i)
 {
 	if(groupSpecies[i][0] != -1)
 	{
-
 		Info << Y[groupSpecies[i][0]].name() << endl;		
 	}
 }

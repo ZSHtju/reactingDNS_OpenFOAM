@@ -20,27 +20,6 @@ solverPerformance::debug = 0;
     {
 		volScalarField& Yi = Y[i];
        
-		for(label icell = 0; icell < rho.size(); icell++)
-		{
-			Hsi[icell] = composition.Hs(i, p[icell], T[icell]);
-		}
-		volScalarField::Boundary& HsiBf = Hsi.boundaryFieldRef();
-
-		forAll(HsiBf, patchi)
-		{
-			scalarField& HsiPatch = HsiBf[patchi];
-			const scalarField& pp = p.boundaryField()[patchi];
-			const scalarField& Tp = T.boundaryField()[patchi];
-
-			forAll(HsiPatch, facei)
-			{
-				HsiPatch[facei] = composition.Hs(i, pp[facei], Tp[facei]);
-			}
-		}
-   	//Hsi.correctBoundaryConditions();
-	   vk += Hsi*mixAlpha*fvc::grad(Yi); //vk += -rho*Hai*(Diffi+Lei*mixAlpha/rho)*(fvc::grad(Yi));
-	   diffsh += fvc::laplacian(mixAlpha*Hsi,Yi);
-	   //volScalarField& Ymean = Y[i];
 	    fvScalarMatrix YEqn
             (
                 fvm::ddt(rho, Yi)
@@ -84,10 +63,8 @@ solverPerformance::debug = 0;
           : -dpdt
         )
       - fvm::laplacian(mixAlpha+turbulence->mut()/Prt, he)
-      + diffsh
      ==
         reaction->Qdot()
-      + fvc::div(vk)
       + fvOptions(rho, he)
     );
 

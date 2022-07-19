@@ -21,6 +21,7 @@ type plane;//circle;//
 startPoint startPoint [0 0 0 0 0] (0 0.004 0);//(0 0 0);
 amplitudeFactor  0; // real amplitude = initialFlameThickness*amplitudeFactor;
 frequency  0;  //  2*pi*frequency
+reverse  off; // reverse the default unburnt and burnt regions
 
 // for circle
 radius                   radius [0 1 0 0 0] 1e-3;
