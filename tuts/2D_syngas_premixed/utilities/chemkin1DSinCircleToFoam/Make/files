@@ -1,3 +1,0 @@
-chemkin1DSinCircleToFoam.C
-
-EXE = $(FOAM_USER_APPBIN)/chemkin1DSinCircleToFoam

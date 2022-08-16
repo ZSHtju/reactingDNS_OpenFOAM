@@ -12,29 +12,6 @@ volScalarField MW
     dimensionedScalar("MW",dimensionSet (0,0,0,0,0,0,0),0.0)
 );
 
-dimensionedScalar pUnit("pUnit",dimensionSet (1,-1,-2,0,0,0,0),1.0);
-dimensionedScalar TUnit("TUnit", dimTemperature, 1.0);
-dimensionedScalar DUnit("DUnit",dimensionSet (0,2,-1,0,0,0,0),1.0);
-dimensionedScalar lambdaUnit("lambdaUnit",dimensionSet (1,1,-3,-1,0,0,0),1.0);
-dimensionedScalar MuUnit("MuUnit",dimensionSet (1,-1,-1,0,0,0,0),1.0);
-
-
-volScalarField diffsh
-(
-        IOobject
-        (
-        "diffsh",
-		runTime.timeName(),
-		mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-        //false
-        ),
-        mesh,
-        dimensionedScalar("diffsh", dimEnergy/dimTime/dimVolume, 0.0)
-);
-
-//
 volScalarField chemistryhsSource
 (
         IOobject
@@ -50,10 +27,13 @@ volScalarField chemistryhsSource
         dimensionedScalar("chemistryhsSource", dimEnergy/dimTime/dimVolume, 0.0)
 );
 
+dimensionedScalar pUnit("pUnit",dimensionSet (1,-1,-2,0,0,0,0),1.0);
+dimensionedScalar TUnit("TUnit", dimTemperature, 1.0);
+dimensionedScalar DUnit("DUnit",dimensionSet (0,2,-1,0,0,0,0),1.0);
+dimensionedScalar lambdaUnit("lambdaUnit",dimensionSet (1,1,-3,-1,0,0,0),1.0);
+dimensionedScalar MuUnit("MuUnit",dimensionSet (1,-1,-1,0,0,0,0),1.0);
 
-
-
- 
+//
 /* PtrList<sutherlandTransport<species::thermo<janafThermo<perfectGas<specie>>,sensibleEnthalpy>>> specieData(Y.size());
 forAll(specieData, i)
 {
@@ -71,71 +51,70 @@ forAll(specieData, i)
 
 //List<dimensionedScalar> Le(Y.size(),0.0);
 
-
 PtrList<volScalarField> Diff(Y.size());
 forAll(Y,i)
 {
-word name("Diff"+Y[i].name());
-Diff.set
-(
-i,new volScalarField
-    ( 
-    IOobject
-    (
-        name,
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,  
-    dimensionedScalar(name,dimensionSet (0,2,-1,0,0,0,0),0)
-    )
-);
+	word name("Diff"+Y[i].name());
+	Diff.set
+	(
+	i,new volScalarField
+		( 
+		IOobject
+		(
+			name,
+			runTime.timeName(),
+			mesh,
+			IOobject::NO_READ,
+			IOobject::NO_WRITE
+		),
+		mesh,  
+		dimensionedScalar(name,dimensionSet (0,2,-1,0,0,0,0),0)
+		)
+	);
 }
 
 PtrList<volScalarField> d(0.5*Y.size()*(Y.size()+1));
 forAll(d,i)
 {
-word name("d"+i);
-d.set
-(
-i,new volScalarField
-    ( 
-    IOobject
-    (
-        name,
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,  
-    dimensionedScalar(name,dimensionSet (0,0,0,0,0,0,0),0)
-    )
-);
+	word name("d"+i);
+	d.set
+	(
+	i,new volScalarField
+		( 
+		IOobject
+		(
+			name,
+			runTime.timeName(),
+			mesh,
+			IOobject::NO_READ,
+			IOobject::NO_WRITE
+		),
+		mesh,  
+		dimensionedScalar(name,dimensionSet (0,0,0,0,0,0,0),0)
+		)
+	);
 }
 
 PtrList<volScalarField> X(Y.size());
 forAll(X,i)
 {
-word name("X"+Y[i].name());
-X.set
-(
-i,new volScalarField
-    ( 
-    IOobject
-    (
-        name,
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,  
-    dimensionedScalar(name,dimensionSet (0,0,0,0,0,0,0),0)
-    )
-);
+	word name("X"+Y[i].name());
+	X.set
+	(
+	i,new volScalarField
+		( 
+		IOobject
+		(
+			name,
+			runTime.timeName(),
+			mesh,
+			IOobject::NO_READ,
+			IOobject::NO_WRITE
+		),
+		mesh,  
+		dimensionedScalar(name,dimensionSet (0,0,0,0,0,0,0),0)
+		)
+	);
 }
 
 //**********************Binary Diffusion****************//
@@ -217,19 +196,6 @@ volScalarField Hsi
 	       zeroGradientFvPatchScalarField::typeName
 );
 
-volScalarField fuelDi
-(
-           IOobject
-           (
-              "fuelDi",
-              runTime.timeName(),
-              mesh,
-              IOobject::NO_READ,
-              IOobject::AUTO_WRITE
-           ),
-           mesh,
-           dimensionedScalar("fuelDi",dimensionSet (0,2,-1,0,0,0,0),0.0)
-);
 
 volVectorField DiffError
 (
@@ -259,4 +225,17 @@ volVectorField vk
            dimensionedVector("vk",dimensionSet(1,0,-3,0,0,0,0),vector::zero)
 );
 
-
+volScalarField diffsh
+(
+        IOobject
+        (
+        "diffsh",
+		runTime.timeName(),
+		mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+        //false
+        ),
+        mesh,
+        dimensionedScalar("diffsh", dimEnergy/dimTime/dimVolume, 0.0)
+);

@@ -12,7 +12,6 @@ MW = 1/MW;
 // get species mole fraction
 forAll(Y,i)
 {
-    
     X[i] = Y[i]*MW/composition.Wi(i);
 }
 
@@ -72,7 +71,7 @@ forAll(Y,i)
 //volScalarField& 	Xi = X[i];
 	if(differentialDiffusion)
 	{
-		volScalarField& 	Yi = Y[i];
+		//volScalarField& 	Yi = Y[i];
 		DiNumerator *= 0 ;//reset to 0
 		DiDenominator *= 0;
 		for (label j = 0; j< Y.size(); j++)
@@ -90,7 +89,7 @@ forAll(Y,i)
 			} 
 		}
 		Diff[i] = DiNumerator*DUnit/ DiDenominator; //*********** Di m2/s*******************//
-		DiffError += (rho*Diff[i]*fvc::grad(Yi) + Yi*rho*Diff[i]*fvc::grad(MW)/MW);
+		//DiffError += (rho*Diff[i]*fvc::grad(Yi) + Yi*rho*Diff[i]*fvc::grad(MW)/MW);
 	}
 	//Lambdai = lambdaUnit*1e-5*exp(Lambda1[i]*pow(log(T/TUnit),0) + Lambda2[i]*pow(log(T/TUnit),1) + Lambda3[i]*pow(log(T/TUnit),2) + Lambda4[i]*pow(log(T/TUnit),3));
 	// mixLambdaA += Xi*Lambda[i];
@@ -132,7 +131,7 @@ if(thermalDiffusion)
 					TDRatio_H += X[i]*X[j]*(TDiff1[j]*pow(T/TUnit,0) + TDiff2[j]*pow(T/TUnit,1) + TDiff3[j]*pow(T/TUnit,2) + TDiff4[j]*pow(T/TUnit,3));
 				}
 			}		
-			DiffError += 	rho*Diff[i]*TDRatio_H*Y[i]*fvc::grad(T)/(T*(X[i]+SMALL));	
+			//DiffError += 	rho*Diff[i]*TDRatio_H*Y[i]*fvc::grad(T)/(T*(X[i]+SMALL));	
 		}
 		
 		if(Y[i].name() == "H2")
@@ -144,7 +143,7 @@ if(thermalDiffusion)
 					TDRatio_H2 += X[i]*X[j]*(TDiff1[j+Y.size()]*pow(T/TUnit,0) + TDiff2[j+Y.size()]*pow(T/TUnit,1) + TDiff3[j+Y.size()]*pow(T/TUnit,2) + TDiff4[j+Y.size()]*pow(T/TUnit,3));
 				}
 			}
-			DiffError += 	rho*Diff[i]*TDRatio_H2*Y[i]*fvc::grad(T)/(T*(X[i]+SMALL));				
+			//DiffError += 	rho*Diff[i]*TDRatio_H2*Y[i]*fvc::grad(T)/(T*(X[i]+SMALL));				
 		}		
 	}
 }

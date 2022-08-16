@@ -13,7 +13,6 @@ solverPerformance::debug = 0;
 vk *= 0;
 diffsh *= 0;
 DiffError *= 0;
-DiffErrors *= 0;
 // step : advection-diffusoin
 	//label inertIndex = -1;
 	forAll(Y,i)
@@ -21,18 +20,21 @@ DiffErrors *= 0;
 		volScalarField& Yi = Y[i];
 		volScalarField& Xi = X[i];
 		DiffError += (rho*Diff[i]*fvc::grad(Yi) + Yi*rho*Diff[i]*fvc::grad(MW)/MW);
-		if(Y[i].name() == "H")
+		if(thermalDiffusion)
 		{
-		   DiffErrors +=  (-rho*Diff[i]*TDRatio_H*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
-		}
-		else if(Y[i].name() == "H2")
-		{
-		   DiffErrors +=  (-rho*Diff[i]*TDRatio_H2*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
-		}		  
+			if(Y[i].name() == "H")
+			{
+			   DiffError += (-rho*Diff[i]*TDRatio_H*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
+			}
+			else if(Y[i].name() == "H2")
+			{
+			   DiffError +=  (-rho*Diff[i]*TDRatio_H2*fvc::grad(T)*Yi/(T*(Xi+SMALL)));
+			}	
+		}			
 	}
 	volScalarField Yt(0.0*Y[0]);
     surfaceScalarField  phiUc = linearInterpolate(DiffError) & mesh.Sf();
-	surfaceScalarField  phiUs = linearInterpolate(DiffErrors) & mesh.Sf();
+
     for(label i=0; i < Y.size(); i++)
     {
 		volScalarField& Yi = Y[i];
@@ -40,18 +42,21 @@ DiffErrors *= 0;
 		volScalarField& Diffi = Diff[i];
 		volScalarField  ThermalDiffRatio = TDRatio_H*0;
 		
-		if(Y[i].name() == "H")
+		if(thermalDiffusion)
 		{
-		   ThermalDiffRatio = TDRatio_H;
-		}
-		else if(Y[i].name() == "H2")
-		{
-		   ThermalDiffRatio = TDRatio_H2;
-		}		   
-		else
-		{
-		   ThermalDiffRatio *= 0;
-		}			   
+			if(Y[i].name() == "H")
+			{
+			   ThermalDiffRatio = TDRatio_H;
+			}
+			else if(Y[i].name() == "H2")
+			{
+			   ThermalDiffRatio = TDRatio_H2;
+			}		   
+			else
+			{
+			   ThermalDiffRatio *= 0;
+			}
+		}			
         
 	   for(label icell = 0; icell < rho.size(); icell++)
 	   {
@@ -72,7 +77,7 @@ DiffErrors *= 0;
 			}
 		}
 		
-		vk += Hsi*(rho*Diffi*fvc::grad(Yi)-Yi*rho*Diffi*fvc::grad(MW)/MW+(-rho*Diff[i]*ThermalDiffRatio*fvc::grad(T)*Yi/(T*(Xi+SMALL)))-Yi*DiffError-Yi*DiffErrors);		
+		vk += Hsi*(rho*Diffi*fvc::grad(Yi)-Yi*rho*Diffi*fvc::grad(MW)/MW+(-rho*Diff[i]*ThermalDiffRatio*fvc::grad(T)*Yi/(T*(Xi+SMALL)))-Yi*DiffError);		
 		diffsh += fvc::laplacian(mixAlpha*Hsi,Yi);// override temperature to enthalpy
 			
 		fvScalarMatrix YEqn
@@ -80,8 +85,7 @@ DiffErrors *= 0;
 			fvm::ddt(rho, Yi)
 		  + mvConvection->fvmDiv(phi, Yi)
 		  - fvm::laplacian(rho*Diffi+turbulence->mut()/Sct, Yi)   //fvm::laplacian(rho*(Diffi+Lei*mixAlpha/rho), Yi)
-		  + mvConvection->fvmDiv(phiUc,Yi)     
-		  + mvConvection->fvcDiv(phiUs,Yi) 		  
+		  + mvConvection->fvmDiv(phiUc,Yi)     		  
 		  - fvc::laplacian(rho*Diffi*Yi/MW,MW)
 		  - fvc::laplacian(-rho*Diffi*ThermalDiffRatio*Yi/(T*(Xi+SMALL)),T) // soret effect  Yi/(T*(Xi+SMALL)),T)
 		  ==
