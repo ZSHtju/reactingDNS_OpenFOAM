@@ -11,7 +11,7 @@ C7H15                2   459.6   6.253   0.0 0.0 1.0 !   WJP
 IFstream speciesInfo(mesh.time().constant()/"trandat");
 if(!speciesInfo.good())
 {
-	Info << FatalErrorIn( "cannot open trandat in constant") << abort(FatalError);
+	FatalErrorIn(args.executable()) <<  "cannot open trandat in constant" << exit(FatalError);
 }
 Foam::string   headerStr;
 Foam::word    thisSpecies;
@@ -46,7 +46,8 @@ forAll(Y,i)
 {
 	if(!foundSpecies[i])
 	{
-		Info << " species trandata for " << Y[i].name() << " is not found in constant/trandat "<<	FatalErrorIn( "something wrong in your constant/trandat") << abort(FatalError);	
+		Info << " species trandata for " << Y[i].name() << " is not found in constant/trandat "<< endl;
+		FatalErrorIn("something wrong in your constant/trandat") << exit(FatalError);	
 	}		
 }
 // group the species that have the same trandata

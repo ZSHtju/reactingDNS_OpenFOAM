@@ -10,8 +10,8 @@ tmp<fv::convectionScheme<scalar> > mvConvection
 );
 label tmpDebug = solverPerformance::debug; 
 solverPerformance::debug = 0; 
-	vk *= 0;
-	diffsh *= 0;
+	vk *= 0.;
+	diffsh *= 0.;
 // step : advection-diffusoin
 	//label inertIndex = -1;
 	volScalarField Yt(0.0*Y[0]);
@@ -21,19 +21,19 @@ solverPerformance::debug = 0;
 		volScalarField& Yi = Y[i];
        
 	    fvScalarMatrix YEqn
-            (
-                fvm::ddt(rho, Yi)
-              + mvConvection->fvmDiv(phi, Yi)
-              - fvm::laplacian(mixAlpha+turbulence->mut()/Sct, Yi)   //fvm::laplacian(rho*(Diffi+Lei*mixAlpha/rho), Yi)             
-              ==
-				reaction->R(Yi)
-			  + fvOptions(rho, Yi)
-            );
+		(
+			fvm::ddt(rho, Yi)
+		  + mvConvection->fvmDiv(phi, Yi)
+		  - fvm::laplacian(mixAlpha+turbulence->mut()/Sct, Yi)   //fvm::laplacian(rho*(Diffi+Lei*mixAlpha/rho), Yi)             
+		  ==
+			reaction->R(Yi)
+		  + fvOptions(rho, Yi)
+		);
             YEqn.relax();
-
+			
             fvOptions.constrain(YEqn);
 
-            YEqn.solve("Yi");
+            YEqn.solve(mesh.solver("Yi"));
 
             fvOptions.correct(Yi);
 
@@ -75,7 +75,6 @@ solverPerformance::debug = 0;
     EEqn.solve();
 
     fvOptions.correct(he);
-
 
     thermo.correct();
 

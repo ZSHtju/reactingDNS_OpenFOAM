@@ -56,7 +56,8 @@ forAll(groupSpecies,i)
 						Info << Y[groupSpecies[i][j]].name() << endl;
 					}
 					Info << ")" << endl;
-					Info << " are not provided in constant/speciesMu" <<	FatalErrorIn( "something wrong in your constant/speciesMu") << abort(FatalError);
+					Info << " are not provided in constant/speciesMu" << endl;
+					FatalErrorIn( "something wrong in your constant/speciesMu" )<< exit(FatalError);
 				}					
 			}
 		}

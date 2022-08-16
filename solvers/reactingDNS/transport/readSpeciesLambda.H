@@ -57,7 +57,7 @@ forAll(groupSpecies,i)
 						Info << Y[groupSpecies[i][j]].name() << endl;
 					}
 					Info << ")" << endl;
-					Info << " are not provided in constant/speciesLambda" <<	FatalErrorIn( "something wrong in your constant/speciesLambda") << abort(FatalError);
+					Info << " are not provided in constant/speciesLambda" << endl;	FatalErrorIn( "something wrong in your constant/speciesLambda") << exit(FatalError);
 				}					
 			}
 		}

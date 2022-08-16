@@ -62,7 +62,8 @@ forAll(groupSpecies,i)
 									Info << Y[groupSpecies[j][z]].name() << endl;
 								}
 								Info << ")" << endl;
-								Info << " are not provided in constant/binaryDiff" <<	FatalErrorIn( "something wrong in your constant/binaryDiff") << abort(FatalError);	
+								Info << " are not provided in constant/binaryDiff" <<	endl;
+								FatalErrorIn("something wrong in your constant/binaryDiff" )<< exit(FatalError);	
 							}						
 						}
 						

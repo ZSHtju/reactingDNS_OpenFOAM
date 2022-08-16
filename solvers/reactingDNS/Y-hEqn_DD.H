@@ -10,9 +10,9 @@ tmp<fv::convectionScheme<scalar> > mvConvection
 );
 label tmpDebug = solverPerformance::debug; 
 solverPerformance::debug = 0; 
-vk *= 0;
-diffsh *= 0;
-DiffError *= 0;
+vk *= 0.;
+diffsh *= 0.;
+DiffError *= 0.;
 // step : advection-diffusoin
 	//label inertIndex = -1;
 	forAll(Y,i)
@@ -40,7 +40,7 @@ DiffError *= 0;
 		volScalarField& Yi = Y[i];
 		volScalarField& Xi = X[i];
 		volScalarField& Diffi = Diff[i];
-		volScalarField  ThermalDiffRatio = TDRatio_H*0;
+		volScalarField  ThermalDiffRatio = TDRatio_H*0.;
 		
 		if(thermalDiffusion)
 		{
@@ -54,7 +54,7 @@ DiffError *= 0;
 			}		   
 			else
 			{
-			   ThermalDiffRatio *= 0;
+			   ThermalDiffRatio *= 0.;
 			}
 		}			
         
@@ -96,7 +96,7 @@ DiffError *= 0;
 
 		fvOptions.constrain(YEqn);
 
-		YEqn.solve("Yi");
+		YEqn.solve(mesh.solver("Yi"));
 
 		fvOptions.correct(Yi);
 
@@ -138,7 +138,7 @@ DiffError *= 0;
 
 	fvOptions.constrain(EEqn);
 
-	EEqn.solve("he");
+	EEqn.solve();
 
 	fvOptions.correct(he);
 

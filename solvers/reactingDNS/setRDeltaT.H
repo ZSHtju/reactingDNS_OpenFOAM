@@ -1,9 +1,12 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2013-2020 OpenFOAM Foundation
+   \\    /   O peration     |
+    \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
+-------------------------------------------------------------------------------
+    Copyright (C) 2013-2016 OpenFOAM Foundation
+    Copyright (C) 2020 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -29,30 +32,30 @@ License
     const dictionary& pimpleDict = pimple.dict();
 
     // Maximum flow Courant number
-    scalar maxCo(pimpleDict.lookup<scalar>("maxCo"));
+    scalar maxCo(pimpleDict.get<scalar>("maxCo"));
 
     // Maximum time scale
-    scalar maxDeltaT(pimpleDict.lookupOrDefault<scalar>("maxDeltaT", great));
+    scalar maxDeltaT(pimpleDict.getOrDefault<scalar>("maxDeltaT", GREAT));
 
     // Smoothing parameter (0-1) when smoothing iterations > 0
     scalar rDeltaTSmoothingCoeff
     (
-        pimpleDict.lookupOrDefault<scalar>("rDeltaTSmoothingCoeff", 0.1)
+        pimpleDict.getOrDefault<scalar>("rDeltaTSmoothingCoeff", 0.1)
     );
 
     // Damping coefficient (1-0)
     scalar rDeltaTDampingCoeff
     (
-        pimpleDict.lookupOrDefault<scalar>("rDeltaTDampingCoeff", 1.0)
+        pimpleDict.getOrDefault<scalar>("rDeltaTDampingCoeff", 1.0)
     );
 
     // Maximum change in cell temperature per iteration
     // (relative to previous value)
-    scalar alphaTemp(pimpleDict.lookupOrDefault("alphaTemp", 0.05));
+    scalar alphaTemp(pimpleDict.getOrDefault<scalar>("alphaTemp", 0.05));
 
     // Maximum change in cell concentration per iteration
     // (relative to reference value)
-    scalar alphaY(pimpleDict.lookupOrDefault("alphaY", 1.0));
+    scalar alphaY(pimpleDict.getOrDefault<scalar>("alphaY", 1.0));
 
     Info<< "Time scales min/max:" << endl;
 
@@ -80,12 +83,12 @@ License
     {
         volScalarField::Internal rDeltaTT
         (
-            mag(reaction->Qdot())/(alphaTemp*rho*thermo.Cp()*T)
+            mag(Qdot)/(alphaTemp*rho*thermo.Cp()*T)
         );
 
         Info<< "    Temperature = "
-            << 1/(gMax(rDeltaTT.field()) + vSmall) << ", "
-            << 1/(gMin(rDeltaTT.field()) + vSmall) << endl;
+            << 1/(gMax(rDeltaTT.field()) + VSMALL) << ", "
+            << 1/(gMin(rDeltaTT.field()) + VSMALL) << endl;
 
         rDeltaT.ref() = max(rDeltaT(), rDeltaTT);
     }
@@ -104,7 +107,7 @@ License
                 mesh
             ),
             mesh,
-            dimensionedScalar(rDeltaT.dimensions(), 0)
+            dimensionedScalar(rDeltaT.dimensions(), Zero)
         );
 
         bool foundY = false;
@@ -118,7 +121,7 @@ License
                 if (Yref.found(Yi.name()))
                 {
                     foundY = true;
-                    scalar Yrefi = Yref.lookup<scalar>(Yi.name());
+                    const scalar Yrefi = Yref.get<scalar>(Yi.name());
 
                     rDeltaTY.field() = max
                     (
@@ -136,8 +139,8 @@ License
         if (foundY)
         {
             Info<< "    Composition = "
-                << 1/(gMax(rDeltaTY.field()) + vSmall) << ", "
-                << 1/(gMin(rDeltaTY.field()) + vSmall) << endl;
+                << 1/(gMax(rDeltaTY.field()) + VSMALL) << ", "
+                << 1/(gMin(rDeltaTY.field()) + VSMALL) << endl;
 
             rDeltaT.ref() = max(rDeltaT(), rDeltaTY);
         }
@@ -149,7 +152,7 @@ License
         }
     }
 
-    // Update the boundary values of the reciprocal time-step
+    // Update tho boundary values of the reciprocal time-step
     rDeltaT.correctBoundaryConditions();
 
     // Spatially smooth the time scale field
@@ -174,7 +177,7 @@ License
         );
     }
 
-    // Update the boundary values of the reciprocal time-step
+    // Update tho boundary values of the reciprocal time-step
     rDeltaT.correctBoundaryConditions();
 
     Info<< "    Overall     = "

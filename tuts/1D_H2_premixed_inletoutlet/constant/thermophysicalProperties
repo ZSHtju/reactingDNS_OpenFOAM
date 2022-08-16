@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.3.0                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|  \\    /   O peration     | Version:  v2206                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -10,14 +10,14 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "constant";
     object      thermophysicalProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
 thermoType
 {
     type            hePsiThermo;
-    mixture         multiComponentMixture;
+    mixture         reactingMixture;
     transport       sutherland;
     thermo          janaf;
     energy          sensibleEnthalpy;
@@ -25,9 +25,13 @@ thermoType
     specie          specie;
 }
 
-inertSpecie N2;
+inertSpecie         N2;
 
-#include "thermo.compressibleGas"
+chemistryReader     foamChemistryReader;
+
+foamChemistryFile   "<constant>/reactions";
+
+foamChemistryThermoFile "<constant>/thermo.compressibleGas";
 
 
 // ************************************************************************* //

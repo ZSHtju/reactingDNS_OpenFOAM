@@ -2,8 +2,10 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2016 OpenFOAM Foundation
+    \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
+-------------------------------------------------------------------------------
+    Copyright (C) 2011-2017 OpenFOAM Foundation
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -38,11 +40,11 @@ Description
 	Zhong, S; et al. Fuel 2020, 275, 117980.
 	Zhong, S; et al. Applied Energy 2020, 275, 115320.
 	Zhang, N; et al. Combustion Theory and Modelling, 2020 1-22.
-	
+
 \*---------------------------------------------------------------------------*/
+
 #include "fvCFD.H"
-#include "fluidThermoMomentumTransportModel.H"
-#include "psiReactionThermophysicalTransportModel.H"
+#include "turbulentFluidThermoModel.H"
 #include "psiReactionThermo.H"
 #include "CombustionModel.H"
 #include "multivariateScheme.H"
@@ -52,38 +54,21 @@ Description
 #include "localEulerDdtScheme.H"
 #include "fvcSmooth.H"
 
-/* #include "specie.H"
-#include "perfectGas.H"
-#include "incompressiblePerfectGas.H"
-#include "perfectFluid.H"
-#include "adiabaticPerfectFluid.H"
-#include "rhoConst.H"
-#include "hConstThermo.H"
-#include "eConstThermo.H"
-#include "janafThermo.H"
-
-#include "sensibleEnthalpy.H"
-#include "sensibleInternalEnergy.H"
-#include "thermo.H"
-#include "sutherlandTransport.H"
-#include "constTransport.H"
-
-#include "icoPolynomial.H"
-#include "hPolynomialThermo.H"
-#include "polynomialTransport.H"
-
 #include "IFstream.H"
 #include "OFstream.H"
-#include "Switch.H"
-#include "Random.H"
-#include "mathematicalConstants.H" */
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 int main(int argc, char *argv[])
 {
+    argList::addNote
+    (
+        "Solver for combustion with chemical reactions"
+    );
+
     #include "postProcess.H"
 
-    #include "setRootCase.H"
+    #include "addCheckCaseOptions.H"
+    #include "setRootCaseLists.H"
     #include "createTime.H"
     #include "createMesh.H"
     #include "createControl.H"
@@ -98,9 +83,8 @@ int main(int argc, char *argv[])
 	#include "createTDiffFields.H"
 	#include "createLambdaFields.H"
 	#include "createMuFields.H"
-
+	
     turbulence->validate();
-
 
     if (!LTS)
     {
@@ -108,10 +92,9 @@ int main(int argc, char *argv[])
         #include "setInitialDeltaT.H"
     }
 
-
-
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-	Info<< "\nStarting time loop\n" << endl;
+
+    Info<< "\nStarting time loop\n" << endl;
 	label nStep = 0;
 
     #include "readTranData.H"
@@ -119,8 +102,7 @@ int main(int argc, char *argv[])
 	#include "readThermalDiff.H"
     #include "readSpeciesLambda.H"
     #include "readSpeciesMu.H"
-    //#include "getElementData.H"
-
+	
     while (runTime.run())
     {
         #include "readTimeControls.H"
@@ -136,19 +118,18 @@ int main(int argc, char *argv[])
         }
 
         nStep +=1;
-        runTime++;
+        ++runTime;
 
-        Info<< "Time = " << runTime.timeName() << " nStep = "<< nStep << nl << endl;
+        Info<< "Time = " << runTime.timeName() << nl << endl;
 
         #include "rhoEqn.H"
 
-
         while (pimple.loop())
         {
+
             #include "updateTransProperties.H"
             #include "UEqn.H"
-
-			//chemistry.solve(runTime.deltaT().value());
+			
 			reaction->correct();
 			if(differentialDiffusion)
 			{
@@ -159,30 +140,36 @@ int main(int argc, char *argv[])
 				#include "Y-hEqn.H"
 			}
 
-             // --- Pressure corrector loop
+            // --- Pressure corrector loop
             while (pimple.correct())
             {
-                #include "pEqn.H"
+                if (pimple.consistent())
+                {
+                    #include "pcEqn.H"
+                }
+                else
+                {
+                    #include "pEqn.H"
+                }
             }
 
             if (pimple.turbCorr())
             {
                 turbulence->correct();
-                thermophysicalTransport->correct();
             }
         }
 
-		rho = thermo.rho();
+        rho = thermo.rho();
 
         runTime.write();
-        Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
-            << "  ClockTime = " << runTime.elapsedClockTime() << " s"
-            << nl << endl;
-    }
-       Info<< "End\n" << endl;
 
-       return 0;
+        runTime.printExecutionTime(Info);
+    }
+
+    Info<< "End\n" << endl;
+
+    return 0;
 }
 
 
-// ************************************************************************* //;
+// ************************************************************************* //

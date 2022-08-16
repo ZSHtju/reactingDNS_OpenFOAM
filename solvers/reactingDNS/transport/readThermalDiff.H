@@ -55,7 +55,8 @@ forAll(Y,i)
 									Info << Y[groupSpecies[j][z]].name() << endl;
 								}
 								Info << ")" << endl;
-								Info << " are not provided in constant/thermoDiff" <<	FatalErrorIn( "something wrong in your constant/thermoDiff") << abort(FatalError);
+								Info << " are not provided in constant/thermoDiff" <<	endl; 
+								FatalErrorIn( "something wrong in your constant/thermoDiff" ) << exit(FatalError);
 							}					
 						}
 						
