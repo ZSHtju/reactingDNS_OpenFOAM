@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         CrankNicolson 0.2;//Euler;//backward;
+}
+
+gradSchemes
+{
+    default         fourth;//Gauss cubic;
+}
+
+divSchemes
+{
+    default         Gauss cubic;
+
+    div(phi,U)      Gauss cubic;//limitedLinearV 1;
+    div(phi,Yi_h)   Gauss limitedCubic 1;//limitedLinear 1;
+    div(phi,K)      Gauss cubic;//limitedLinear 1;
+    div(phid,p)     Gauss cubic;//limitedLinear 1;
+    div(phi,epsilon) Gauss cubic;//limitedLinear 1;
+    div(phi,k) Gauss cubic//limitedLinear 1;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss cubic;//linear;
+    div(phiU,p)     Gauss cubic;//limitedLinear 1;
+    div(vk) Gauss cubic;//linear;
+}
+
+laplacianSchemes
+{
+    default         Gauss cubic orthogonal;
+}
+
+interpolationSchemes
+{
+    default         cubic;
+}
+
+snGradSchemes
+{
+    default         fourth;//orthogonal;
+}
+
+fluxRequired
+{
+    default         no;
+    p;
+    pd;
+}
+
+
+// ************************************************************************* //

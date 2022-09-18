@@ -1,0 +1,14 @@
+HashTableSH/HashTableSHCore.C
+HashTableSH/HashTableSH.C
+
+chemistryModel/basicChemistryModel/basicChemistryModel.C
+chemistryModel/BasicChemistryModel/BasicChemistryModels.C
+
+chemistryModel/TDACChemistryModel/reduction/makeChemistryReductionMethods.C
+chemistryModel/TDACChemistryModel/tabulation/makeChemistryTabulationMethods.C
+
+chemistrySolver/chemistrySolver/makeChemistrySolvers.C
+
+functionObjects/specieReactionRates/specieReactionRates.C
+
+LIB = $(FOAM_USER_LIBBIN)/libCCMChemistryModel

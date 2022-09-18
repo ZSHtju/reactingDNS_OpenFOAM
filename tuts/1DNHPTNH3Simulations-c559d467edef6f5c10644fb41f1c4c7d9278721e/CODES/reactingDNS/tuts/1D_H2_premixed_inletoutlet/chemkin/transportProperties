@@ -1,0 +1,497 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "chemkin";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+OH
+{
+
+    transport
+    {
+        As              2.19e-06;
+        Ts              156.308;
+    }
+}
+CN
+{
+
+    transport
+    {
+        As              1.43e-06;
+        Ts              161.0097;
+    }
+}
+C2H3
+{
+
+    transport
+    {
+        As              1.22e-06;
+        Ts              272.279;
+    }
+}
+N2
+{
+
+    transport
+    {
+        As              1.63e-06;
+        Ts              176.3426;
+    }
+}
+HOCN
+{
+
+    transport
+    {
+        As              1.68e-06;
+        Ts              291.025;
+    }
+}
+N
+{
+
+    transport
+    {
+        As              1.46e-06;
+        Ts              164.1372;
+    }
+}
+C2H
+{
+
+    transport
+    {
+        As              1.1e-06;
+        Ts              272.279;
+    }
+}
+HNO
+{
+
+    transport
+    {
+        As              1.77e-06;
+        Ts              181.6599;
+    }
+}
+CH2CO
+{
+
+    transport
+    {
+        As              1.52e-06;
+        Ts              469.7644;
+    }
+}
+CH3
+{
+
+    transport
+    {
+        As              1.11e-06;
+        Ts              215.2021;
+    }
+}
+C2H5
+{
+
+    transport
+    {
+        As              1.07e-06;
+        Ts              293.2841;
+    }
+}
+C2H4
+{
+
+    transport
+    {
+        As              1.23e-06;
+        Ts              317.0564;
+    }
+}
+C3H8
+{
+
+    transport
+    {
+        As              1.04e-06;
+        Ts              338.7418;
+    }
+}
+HCN
+{
+
+    transport
+    {
+        As              1.33e-6;
+        Ts              560.9165;
+    }
+}
+C2H6
+{
+
+    transport
+    {
+        As              1.07e-06;
+        Ts              293.2841;
+    }
+}
+NH3
+{
+
+    transport
+    {
+        As              1.77e-06;
+        Ts              551.6036;
+    }
+}
+CO2
+{
+
+    transport
+    {
+        As              1.71e-06;
+        Ts              300.5352;
+    }
+}
+C2H2
+{
+
+    transport
+    {
+        As              1.22e-06;
+        Ts              272.279;
+    }
+}
+CH2OH
+{
+
+    transport
+    {
+        As              1.43e-06;
+        Ts              486.4471;
+    }
+}
+H2CN
+{
+
+    transport
+    {
+        As              1.33e-06;
+        Ts              560.9165;
+    }
+}
+HCCOH
+{
+
+    transport
+    {
+        As              1.52e-06;
+        Ts              469.7644;
+    }
+}
+H2O2
+{
+
+    transport
+    {
+        As              2.01e-06;
+        Ts              172.1024;
+    }
+}
+HCO
+{
+
+    transport
+    {
+        As              1.39e-06;
+        Ts              519.808;
+    }
+}
+NNH
+{
+
+    transport
+    {
+        As              1.62e-06;
+        Ts              164.1372;
+    }
+}
+N2O
+{
+
+    transport
+    {
+        As              1.68e-06;
+        Ts              291.025;
+    }
+}
+CH2(S)
+{
+
+    transport
+    {
+        As              1e-06;
+        Ts              215.2021;
+    }
+}
+O2
+{
+
+    transport
+    {
+        As              1.82e-06;
+        Ts              172.1024;
+    }
+}
+CH2CHO
+{
+
+    transport
+    {
+        As              1.52e-06;
+        Ts              469.7644;
+    }
+}
+HNCO
+{
+
+    transport
+    {
+        As              1.68e-06;
+        Ts              291.025;
+    }
+}
+HCCO
+{
+
+    transport
+    {
+        As              4.1e-06;
+        Ts              214.8191;
+    }
+}
+H2
+{
+
+    transport
+    {
+        As              7.7e-07;
+        Ts              136.2366;
+    }
+}
+NO2
+{
+
+    transport
+    {
+        As              2.05e-06;
+        Ts              251.2812;
+    }
+}
+CH4
+{
+
+    transport
+    {
+        As              1.14e-06;
+        Ts              205.0919;
+    }
+}
+C
+{
+
+    transport
+    {
+        As              1.46e-06;
+        Ts              164.1372;
+    }
+}
+HO2
+{
+
+    transport
+    {
+        As              2.01e-06;
+        Ts              172.1024;
+    }
+}
+CH3CHO
+{
+
+
+    transport
+    {
+        As              1.52e-06;
+        Ts              469.7644;
+    }
+}
+C3H7
+{
+
+    transport
+    {
+        As              1.04e-06;
+        Ts              338.7418;
+    }
+}
+CH3OH
+{
+
+    transport
+    {
+        As              1.53e-06;
+        Ts              521.8891;
+    }
+}
+CH2O
+{
+
+    transport
+    {
+        As              1.39e-06;
+        Ts              519.808;
+    }
+}
+CO
+{
+  
+    transport
+    {
+        As              1.55e-06;
+        Ts              154.4614;
+    }
+}
+CH3O
+{
+
+    transport
+    {
+        As              1.43e-06;
+        Ts              486.4471;
+    }
+}
+O
+{
+
+    transport
+    {
+        As              2.19e-06;
+        Ts              156.308;
+    }
+}
+HCNN
+{
+
+    transport
+    {
+        As              4.1e-06;
+        Ts              214.8191;
+    }
+}
+NCO
+{
+
+    transport
+    {
+        As              1.68e-06;
+        Ts              291.025;
+    }
+}
+CH2
+{
+
+    transport
+    {
+        As              1e-06;
+        Ts              215.2021;
+    }
+}
+HCNO
+{
+
+    transport
+    {
+        As              1.68e-06;
+        Ts              291.025;
+    }
+}
+NH2
+{
+
+    transport
+    {
+        As              2.42e-06;
+        Ts              156.308;
+    }
+}
+H2O
+{
+
+    transport
+    {
+        As              2.05e-06;
+        Ts              803.1952;
+    }
+}
+NH
+{
+
+    transport
+    {
+        As              2.19e-06;
+        Ts              156.308;
+    }
+}
+H
+{
+
+    transport
+    {
+        As              9.23e-07;
+        Ts              205.5604;
+    }
+}
+AR
+{
+
+    transport
+    {
+        As              2.31e-06;
+        Ts              196.0351;
+    }
+}
+NO
+{
+
+    transport
+    {
+        As              1.81e-06;
+        Ts              176.3426;
+    }
+}
+CH
+{
+
+    transport
+    {
+        As              1.98e-06;
+        Ts              156.308;
+    }
+}
+
+// ************************************************************************* //

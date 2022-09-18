@@ -1,0 +1,31 @@
+ELEMENTS
+ H  O  N 
+END
+SPECIES
+ H2  H  O  O2  OH  H2O  HO2  H2O2   N2 
+END
+REACTIONS
+H+O2+M=HO2+M     3.61E17  -0.72       0.   !DIXON-LEWIS
+  H2O/18.6/  H2/2.86/
+H+H+M=H2+M       1.0E18   -1.0        0.   !D-L
+H+H+H2=H2+H2     9.2E16   -0.6        0.
+H+H+H2O=H2+H2O   6.0E19   -1.25       0.
+H+OH+M=H2O+M     1.6E22   -2.0        0.   !D-L
+  H2O/5/
+H+O+M=OH+M       6.2E16   -0.6        0.   !D-L
+  H2O/5/
+O+O+M=O2+M       1.89E13   0.0    -1788.   !NBS
+H2O2+M=OH+OH+M   1.3E17    0.0    45500.
+H2+O2=2OH        1.7E13    0.0    47780.
+OH+H2=H2O+H      1.17E9    1.3     3626.   !D-L$W
+O+OH=O2+H        3.61E14  -0.5        0.   !JAM 1986
+O+H2=OH+H        5.06E4    2.67    6290.   !KLEMM,ET AL 1986
+OH+HO2=H2O+O2    7.5E12    0.0      0.0    !D-L
+H+HO2=2OH        1.4E14    0.0     1073.   !D-L
+O+HO2=O2+OH      1.4E13    0.0     1073.   !D-L
+2OH=O+H2O        6.0E+8    1.3        0.   !COHEN-WEST.
+H+HO2=H2+O2      1.25E13   0.0        0.   !D-L
+HO2+HO2=H2O2+O2  2.0E12    0.0        0.
+H2O2+H=HO2+H2    1.6E12    0.0     3800.
+H2O2+OH=H2O+HO2  1.0E13    0.0     1800.
+END

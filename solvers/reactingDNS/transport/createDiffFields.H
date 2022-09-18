@@ -211,7 +211,7 @@ volVectorField DiffError
            dimensionedVector("DiffError",dimensionSet (1,-2,-1,0,0,0,0),vector::zero)
 );
 
-volVectorField vk
+surfaceScalarField vk //volVectorField vk
 (
            IOobject
            (
@@ -222,7 +222,7 @@ volVectorField vk
               IOobject::NO_WRITE
            ),
            mesh,
-           dimensionedVector("vk",dimensionSet(1,0,-3,0,0,0,0),vector::zero)
+           dimensionedScalar("vk",dimensionSet(1,2,-3,0,0,0,0),0.0)
 );
 
 volScalarField diffsh
