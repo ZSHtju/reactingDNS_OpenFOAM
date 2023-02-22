@@ -1,7 +1,7 @@
 mixMu *= 0;
 mixLambdaA *= 0 ; // reset the number to zero;
 mixLambdaB *= 0 ;
-DiffError *= 0 ; 
+//DiffError *= 0 ; 
 // get mixture mole mass
 MW *= 0;
 forAll(Y,i)
