@@ -80,20 +80,6 @@ volScalarField MuUnit
     dimensionedScalar("MuUnit",dimensionSet (1,-1,-1,0,0,0,0),1.0)
 );
 
-volScalarField diffsh
-(
-        IOobject
-        (
-        "diffsh",
-		runTime.timeName(),
-		mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-        //false
-        ),
-        mesh,
-        dimensionedScalar("diffsh", dimEnergy/dimTime/dimVolume, 0.0)
-);
 
 //
 volScalarField chemistryhsSource
@@ -306,7 +292,7 @@ volVectorField DiffError
            dimensionedVector("DiffError",dimensionSet (1,-2,-1,0,0,0,0),vector::zero)
 );
 
-volVectorField vk
+surfaceScalarField vk //volVectorField vk
 (
            IOobject
            (
@@ -317,7 +303,20 @@ volVectorField vk
               IOobject::NO_WRITE
            ),
            mesh,
-           dimensionedVector("vk",dimensionSet(1,0,-3,0,0,0,0),vector::zero)
+           dimensionedScalar("vk",dimensionSet(1,2,-3,0,0,0,0),0.0)
 );
 
-
+volScalarField diffsh
+(
+        IOobject
+        (
+        "diffsh",
+		runTime.timeName(),
+		mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+        //false
+        ),
+        mesh,
+        dimensionedScalar("diffsh", dimEnergy/dimTime/dimVolume, 0.0)
+);

@@ -25,4 +25,6 @@ EXE_LIBS = \
     -lcompressibleTransportModels \
     -lfluidThermophysicalModels \
     -lchemistryModel \
-    -lODE 
+    -lODE \
+    -lcombustionModels
+ 

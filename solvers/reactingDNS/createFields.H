@@ -67,6 +67,12 @@ autoPtr<compressible::turbulenceModel> turbulence
     )
 );
 
+Info<< "Creating reaction model\n" << endl;
+autoPtr<CombustionModel<psiReactionThermo>> reaction
+(
+    CombustionModel<psiReactionThermo>::New(thermo, turbulence())
+);
+
 Info<< "Creating field dpdt\n" << endl;
 volScalarField dpdt
 (

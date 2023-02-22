@@ -45,6 +45,7 @@ Description
 #include "turbulentFluidThermoModel.H"
 #include "psiReactionThermo.H"
 #include "BasicChemistryModel.H"
+#include "CombustionModel.H"
 #include "reactingMixture.H"
 #include "chemistrySolver.H"
 #include "thermoPhysicsTypes.H"
@@ -126,7 +127,7 @@ int main(int argc, char *argv[])
             #include "updateTransProperties.H"
             #include "UEqn.H"
 
-			chemistry.solve(runTime.deltaT().value());
+			reaction->correct();
 			if(differentialDiffusion)
 			{
 				#include "Y-hEqn_DD.H"
