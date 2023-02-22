@@ -113,7 +113,7 @@ for(label i=0; i < Y.size(); i++)
 // for N2
 {
 	label i = inertIndex;
-	volScalarField& Yi = Y[i];
+	//volScalarField& Yi = Y[i];
 	for(label icell = 0; icell < rho.size(); icell++)
 	{
 		Hsi[icell] = composition.Hs(i, p[icell], T[icell]);
