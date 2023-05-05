@@ -37,16 +37,16 @@ Current method is simple and can be easily implemented in other solvers in OpenF
 
 [1] Kee, R. J.; Dixon-Lewis, G.; Warnatz, J.; Coltrin, M. E.; Miller, J. A. A Fortran com-puter code package for the evaluation of gas-phase multicomponent transport properties.Sandia National Laboratories Report SAND86-8246, 1986, 13, 80401–1887.
 
-[2] Zhong, S.; Zhang, F.; Jangi, M.; Bai, X.-S.; Yao, M.; Peng, Z. Structure and propagation of n-heptane/air premixed flame in low temperature ignition regime. Applied  Energy, 2020, 275, 115320.
+[2] Zhong, S.; Zhang, F.; Jangi, M.; Bai, X.-S.; Yao, M.; Peng, Z. Structure and propagation of n-heptane/air premixed flame in low temperature ignition regime. Applied  Energy, 2020, 275, 115320. https://doi.org/10.1016/j.apenergy.2020.115320.
 
-[3] Zhang, N.; Zhang, F.; Zhong, S.; Peng, Z.; Yu, J.; Liu, H.; Xu, C. Numerical and theoretical investigation of ethanol/air flame instability. Combustion Theory and Modelling, 2020, 1–22.
+[3] Zhang, N.; Zhang, F.; Zhong, S.; Peng, Z.; Yu, J.; Liu, H.; Xu, C. Numerical and theoretical investigation of ethanol/air flame instability. Combustion Theory and Modelling, 2020, 1–22. https://doi.org/10.1080/13647830.2020.1820578.
 
-[4] Zhong, S.;  Zhang, F.;  Peng, Z.;  Bai, F.;  Du, Q. Roles of CO2 and H2O in premixed turbulent oxy-fuel combustion. Fuel, 2018, 234, 1044–1054.
+[4] Zhong, S.;  Zhang, F.;  Peng, Z.;  Bai, F.;  Du, Q. Roles of CO2 and H2O in premixed turbulent oxy-fuel combustion. Fuel, 2018, 234, 1044–1054. https://doi.org/10.1016/j.fuel.2018.07.135.
 
-[5] Zhong, S.; Zhang, F.; Du, Q.; Peng, Z. Characteristics of reactivity controlled combustion with n-heptane low temperature reforming products. Fuel, 2020, 275, 117980.
+[5] Zhong, S.; Zhang, F.; Du, Q.; Peng, Z. Characteristics of reactivity controlled combustion with n-heptane low temperature reforming products. Fuel, 2020, 275, 117980. https://doi.org/10.1016/j.fuel.2020.117980.
 
 [6] Rodolfo C. Rocha, Shenghui Zhong, Leilei Xu, Xue-Song Bai, Mário Costa, Xiao Cai, Haisol Kim, Christian Brackmann, Zhongshan Li, and Marcus Aldén.
-Energy & Fuels 2021, 35 (9), 7179-7192. DOI: 10.1021/acs.energyfuels.0c03520.
+Energy & Fuels 2021, 35 (9), 7179-7192. https://doi.org/10.1021/acs.energyfuels.0c03520.
 
 
 Other published papers using reactingDNS solver:
