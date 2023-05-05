@@ -45,5 +45,17 @@ Current method is simple and can be easily implemented in other solvers in OpenF
 
 [5] Zhong, S.; Zhang, F.; Du, Q.; Peng, Z. Characteristics of reactivity controlled combustion with n-heptane low temperature reforming products. Fuel, 2020, 275, 117980.
 
-[6] Rodolfo C. Rocha, Shenghui Zhong, Leilei Xu, Xue-Song Bai, Mário Costa, Xiao Cai, Haisol Kim, Christian Brackmann, Zhongshan Li, and Marcus Aldén
-Energy & Fuels 2021 35 (9), 7179-7192. DOI: 10.1021/acs.energyfuels.0c03520.
+[6] Rodolfo C. Rocha, Shenghui Zhong, Leilei Xu, Xue-Song Bai, Mário Costa, Xiao Cai, Haisol Kim, Christian Brackmann, Zhongshan Li, and Marcus Aldén.
+Energy & Fuels 2021, 35 (9), 7179-7192. DOI: 10.1021/acs.energyfuels.0c03520.
+
+
+Other published papers using reactingDNS solver:
+
+[1] Tahsin Berk Kıymaz, Emre Böncü, Dilay Güleryüz, Mehmet Karaca, Barış Yılmaz, Christophe Allouis, İskender Gökalp. Numerical investigations on flashback dynamics of premixed methane-hydrogen-air laminar flames. International Journal of Hydrogen Energy, 2022, 47(59), 25022-25033. https://doi.org/10.1016/j.ijhydene.2022.05.230.
+
+[2] Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. Effects of hydrogen enrichment and turbulence intensity on the combustion mode in locally stratified dual-fuel mixtures of n-dodecane/methane. Applications in Energy and Combustion Science, 2022,  10, 100072. https://doi.org/10.1016/j.jaecs.2022.100072.
+
+[3] Shervin Karimkashi, Parsa Tamadonfar, Ossi Kaario, Ville Vuorinen. A Numerical Investigation on Effects of Hydrogen Enrichment and Turbulence on NO Formation Pathways in Premixed Ammonia/Air Flames. Combustion Science and Technology, 2023,  https://doi.org/10.1080/00102202.2023.2180634.
+
+[4] Parsa Tamadonfar, Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. A study of flame dynamics and structure in premixed turbulent planar NH3/H2/air flames. International Journal of Engine Research, 2023, https://doi.org/10.1177/14680874231170657.
+
