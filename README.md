@@ -59,3 +59,4 @@ Other published papers using reactingDNS solver:
 
 [4] Parsa Tamadonfar, Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. A study of flame dynamics and structure in premixed turbulent planar NH3/H2/air flames. International Journal of Engine Research, 2023, https://doi.org/10.1177/14680874231170657.
 
+[5] Parsa Tamadonfar, Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. A Numerical Study on Premixed Turbulent Planar Ammonia/Air and Ammonia/Hydrogen/Air Flames: An Analysis on Flame Displacement Speed and Burning Velocity. Flow, Turbulence and Combustion, 2023, 1-25. https://doi.org/10.1007/s10494-023-00445-y.
