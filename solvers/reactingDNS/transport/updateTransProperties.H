@@ -15,9 +15,10 @@ forAll(Y,i)
     X[i] = Y[i]*MW/composition.Wi(i);
 }
 
+volScalarField tmpT = log(T/TUnit);
+
 if(differentialDiffusion)
 {
-	volScalarField tmpT = log(T/TUnit);
 	forAll(groupSpecies,i)
 	{
 		if(groupSpecies[i][0] != -1)
