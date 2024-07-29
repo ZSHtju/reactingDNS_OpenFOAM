@@ -1,0 +1,136 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+libs
+(
+//"libCCMchemistryModel.so"
+);
+
+application     reactingDNS;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.005;//0.0004;
+
+deltaT          1e-7;
+
+writeControl    adjustableRunTime;
+//writeControl    timeStep;
+
+writeInterval   1e-4;
+//writeInterval   100;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  10;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   10;
+
+runTimeModifiable true;
+
+adjustTimeStep  yes;
+
+maxDeltaT 1e-6;
+
+maxCo           0.3;
+
+libs ("libDLBchemistryModel.so");
+functions
+{
+    #includeFunc Qdot;
+    #includeFunc cutPlaneSurface;
+
+
+    maxT
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+ 
+        log             true;
+        writeControl    writeTime;
+        writeFields     true;
+ 
+        regionType      all;
+        name            c0;
+        operation       max;
+ 
+        //weightField     alpha1;
+ 
+        fields
+        (
+            T
+        );
+    };
+
+    QdotIntegral
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+ 
+        log             true;
+        writeControl    writeTime;
+        writeFields     true;
+ 
+        regionType      all;
+        name            c0;
+        operation       volIntegrate;
+ 
+        //weightField     alpha1;
+ 
+        fields
+        (
+            Qdot
+        );
+    };
+
+    leftAmmonia
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+ 
+        log             true;
+        writeControl    writeTime;
+        writeFields     true;
+ 
+        regionType      all;
+        name            c0;
+        operation       volIntegrate;
+ 
+        weightField     rho;
+ 
+        fields
+        (
+            NH3
+        );
+    };
+};
+
+combustionFieldDict
+{
+    minJc 0.0;
+    maxJc 0.419503;
+}
+// ************************************************************************* //

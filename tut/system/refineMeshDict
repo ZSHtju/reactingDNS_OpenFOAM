@@ -1,0 +1,53 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      refineMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Cells to refine; name of cell set
+set topo_size;
+
+// Type of coordinate system:
+coordinateSystem global;
+globalCoeffs
+{
+    tan1 (1 0 0);
+    tan2 (0 1 0);
+}
+patchLocalCoeffs
+{
+    patch outside;  // Normal direction is facenormal of zero'th face of patch
+    tan1 (1 0 0);
+}
+
+// List of directions to refine, if global or patchLocal
+directions
+(
+    tan1
+    tan2
+   // normal
+);
+
+// Whether to use hex topology. This will
+// - if patchLocal: all cells on selected patch should be hex
+// - split all hexes in 2x2x2 through the middle of edges.
+useHexTopology  true;
+
+// Cut purely geometric (will cut hexes through vertices) or take topology
+// into account. Incompatible with useHexTopology
+geometricCut    false;
+
+// Write meshes from intermediate steps
+writeMesh       false;
+
+// ************************************************************************* //
