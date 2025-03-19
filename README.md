@@ -72,3 +72,5 @@ Other published papers using reactingDNS solver:
 [10] Amin Bekhradinasab, Shidvash Vakilipour, Jafar Al-Zaili. Influence of swirl number and air preheating on turbulent mixing in hydrogen–methane blends within a swirl-stabilized burner. International Journal of Heat and Mass Transfer, 2025, 239, 126475, https://doi.org/10.1016/j.ijheatmasstransfer.2024.126475.
 
 [11] Fan Zhang, Yangyang Ban, Shenghui Zhong, Zhenwei Li, Yiqiang Pei. Characteristics of inter-pulse coupling regimes during nanosecond pulse discharge with elevated single-pulse energy in flowing mixtures. Physics of Fluids, 2025, 37, 013619, https://doi.org/10.1063/5.0250530.
+
+[12] Parsa Tamadonfar, Vili-Petteri Salomaa, Aleksi Rintanen, Shervin Karimkashi, Thorsten Zirwes, Ville Vuorinen, Ossi Kaario. A numerical study on side-wall quenching of premixed laminar flames: An analysis of ammonia/hydrogen/air mixtures. Combustion and Flame, 2025, 275, 114100, https://doi.org/10.1016/j.combustflame.2025.114100.
