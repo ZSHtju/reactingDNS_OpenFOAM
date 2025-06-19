@@ -74,3 +74,5 @@ Other published papers using reactingDNS solver:
 [11] Fan Zhang, Yangyang Ban, Shenghui Zhong, Zhenwei Li, Yiqiang Pei. Characteristics of inter-pulse coupling regimes during nanosecond pulse discharge with elevated single-pulse energy in flowing mixtures. Physics of Fluids, 2025, 37, 013619, https://doi.org/10.1063/5.0250530.
 
 [12] Parsa Tamadonfar, Vili-Petteri Salomaa, Aleksi Rintanen, Shervin Karimkashi, Thorsten Zirwes, Ville Vuorinen, Ossi Kaario. A numerical study on side-wall quenching of premixed laminar flames: An analysis of ammonia/hydrogen/air mixtures. Combustion and Flame, 2025, 275, 114100, https://doi.org/10.1016/j.combustflame.2025.114100.
+
+[13] Mohammad Shahsavari, Nilanjan Chakraborty, Alexander A. Konnov, Shenghui Zhong, Agustin Valera-Medina, Mehdi Jangi. A comparative analysis of plasma and hydrogen effects on premixed ammonia combustion. Combustion and Flame, 2025, 279, 114300, https://doi.org/10.1016/j.combustflame.2025.114300.
