@@ -76,3 +76,5 @@ Other published papers using reactingDNS solver:
 [12] Parsa Tamadonfar, Vili-Petteri Salomaa, Aleksi Rintanen, Shervin Karimkashi, Thorsten Zirwes, Ville Vuorinen, Ossi Kaario. A numerical study on side-wall quenching of premixed laminar flames: An analysis of ammonia/hydrogen/air mixtures. Combustion and Flame, 2025, 275, 114100, https://doi.org/10.1016/j.combustflame.2025.114100.
 
 [13] Mohammad Shahsavari, Nilanjan Chakraborty, Alexander A. Konnov, Shenghui Zhong, Agustin Valera-Medina, Mehdi Jangi. A comparative analysis of plasma and hydrogen effects on premixed ammonia combustion. Combustion and Flame, 2025, 279, 114300, https://doi.org/10.1016/j.combustflame.2025.114300.
+
+[14] Vili-Petteri Salomaa, Parsa Tamadonfar, Mahmoud Gadalla, Ville Vuorinen, Ossi Kaario. A numerical study of hydrogen enrichment effects on laminar methane/air flame propagation and emissions in crevices.  Applications in Energy and Combustion Science, 2025,  100351. https://doi.org/10.1016/j.jaecs.2025.100351.
