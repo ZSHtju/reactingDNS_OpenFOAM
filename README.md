@@ -78,3 +78,5 @@ Other published papers using reactingDNS solver:
 [13] Mohammad Shahsavari, Nilanjan Chakraborty, Alexander A. Konnov, Shenghui Zhong, Agustin Valera-Medina, Mehdi Jangi. A comparative analysis of plasma and hydrogen effects on premixed ammonia combustion. Combustion and Flame, 2025, 279, 114300, https://doi.org/10.1016/j.combustflame.2025.114300.
 
 [14] Vili-Petteri Salomaa, Parsa Tamadonfar, Mahmoud Gadalla, Ville Vuorinen, Ossi Kaario. A numerical study of hydrogen enrichment effects on laminar methane/air flame propagation and emissions in crevices.  Applications in Energy and Combustion Science, 2025,  100351. https://doi.org/10.1016/j.jaecs.2025.100351.
+
+[15] Yuchen Zhou, Shijie Xu, Leilei Xu, Xue-Song Bai. Ignition, combustion modes and NO/N2O emissions in ammonia/n-heptane combustion under RCCI engine conditions. Combustion and Flame, 2025, 280, 114352, https://doi.org/10.1016/j.combustflame.2025.114352.
