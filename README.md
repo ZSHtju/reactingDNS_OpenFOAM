@@ -85,3 +85,5 @@ Other published papers using reactingDNS solver:
 
 [17] Gihun Shim, Praise Noah Johnson, Taaresh Sanjeev Taneja, and Suo Yang. Drift-Diffusion Modeling of Non-equilibrium Plasma Streamerswith Photoionization. AIAA SCITECH 2026 Forum, https://doi.org/10.2514/6.2026-0399.
 
+[18] Liqing Lu, Meng Zhang, Weijie Zhang, Ziqi Wang, Jinhua Wang, Zuohua Huang. A dynamic adaptive table look-up approach for FGM modeling of axially staged ammonia flames. Proceedings of the Combustion Institute, 2026, 42, 106129, https://doi.org/10.1016/j.proci.2026.106129.
+
