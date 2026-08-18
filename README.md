@@ -48,46 +48,43 @@ Current method is simple and can be easily implemented in other solvers in OpenF
 [6] Rodolfo C. Rocha, Shenghui Zhong, Leilei Xu, Xue-Song Bai, Mário Costa, Xiao Cai, Haisol Kim, Christian Brackmann, Zhongshan Li, and Marcus Aldén.
 Energy & Fuels 2021, 35 (9), 7179-7192. https://doi.org/10.1021/acs.energyfuels.0c03520.
 
+[7] Tahsin Berk Kıymaz, Emre Böncü, Dilay Güleryüz, Mehmet Karaca, Barış Yılmaz, Christophe Allouis, İskender Gökalp. Numerical investigations on flashback dynamics of premixed methane-hydrogen-air laminar flames. International Journal of Hydrogen Energy, 2022, 47(59), 25022-25033. https://doi.org/10.1016/j.ijhydene.2022.05.230.
 
-Other published papers using reactingDNS solver:
+[8] Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. Effects of hydrogen enrichment and turbulence intensity on the combustion mode in locally stratified dual-fuel mixtures of n-dodecane/methane. Applications in Energy and Combustion Science, 2022,  10, 100072. https://doi.org/10.1016/j.jaecs.2022.100072.
 
-[1] Tahsin Berk Kıymaz, Emre Böncü, Dilay Güleryüz, Mehmet Karaca, Barış Yılmaz, Christophe Allouis, İskender Gökalp. Numerical investigations on flashback dynamics of premixed methane-hydrogen-air laminar flames. International Journal of Hydrogen Energy, 2022, 47(59), 25022-25033. https://doi.org/10.1016/j.ijhydene.2022.05.230.
+[9] Shervin Karimkashi, Parsa Tamadonfar, Ossi Kaario, Ville Vuorinen. A numerical investigation on effects of hydrogen enrichment and turbulence on NO formation pathways in premixed ammonia/air flames. Combustion Science and Technology, 2023,  https://doi.org/10.1080/00102202.2023.2180634.
 
-[2] Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. Effects of hydrogen enrichment and turbulence intensity on the combustion mode in locally stratified dual-fuel mixtures of n-dodecane/methane. Applications in Energy and Combustion Science, 2022,  10, 100072. https://doi.org/10.1016/j.jaecs.2022.100072.
+[10] Parsa Tamadonfar, Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. A study of flame dynamics and structure in premixed turbulent planar NH3/H2/air flames. International Journal of Engine Research, 2023, https://doi.org/10.1177/14680874231170657.
 
-[3] Shervin Karimkashi, Parsa Tamadonfar, Ossi Kaario, Ville Vuorinen. A numerical investigation on effects of hydrogen enrichment and turbulence on NO formation pathways in premixed ammonia/air flames. Combustion Science and Technology, 2023,  https://doi.org/10.1080/00102202.2023.2180634.
+[11] Parsa Tamadonfar, Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. A Numerical Study on Premixed Turbulent Planar Ammonia/Air and Ammonia/Hydrogen/Air Flames: An Analysis on Flame Displacement Speed and Burning Velocity. Flow, Turbulence and Combustion, 2023, 1-25, https://doi.org/10.1007/s10494-023-00445-y.
 
-[4] Parsa Tamadonfar, Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. A study of flame dynamics and structure in premixed turbulent planar NH3/H2/air flames. International Journal of Engine Research, 2023, https://doi.org/10.1177/14680874231170657.
+[12] Parsa Tamadonfar, Shervin Karimkashi, Thorsten Zirwes, Ville Vuorinen, Ossi Kaario. A numerical study on premixed laminar ammonia/air flames enriched with hydrogen: An analysis on flame–wall interaction. Combustion and Flame, 2024, 265, 113444, https://doi.org/10.1016/j.combustflame.2024.113444.
 
-[5] Parsa Tamadonfar, Shervin Karimkashi, Ossi Kaario, Ville Vuorinen. A Numerical Study on Premixed Turbulent Planar Ammonia/Air and Ammonia/Hydrogen/Air Flames: An Analysis on Flame Displacement Speed and Burning Velocity. Flow, Turbulence and Combustion, 2023, 1-25, https://doi.org/10.1007/s10494-023-00445-y.
+[13] Yuchen Zhou, Shijie Xu, Leilei Xu, Xue-Song Bai. FGM modeling of ammonia/n-heptane combustion under RCCI engine conditions. Proceedings of the Combustion Institute, 2024, 40, 105601, https://doi.org/10.1016/j.proci.2024.105601.
 
-[6] Parsa Tamadonfar, Shervin Karimkashi, Thorsten Zirwes, Ville Vuorinen, Ossi Kaario. A numerical study on premixed laminar ammonia/air flames enriched with hydrogen: An analysis on flame–wall interaction. Combustion and Flame, 2024, 265, 113444, https://doi.org/10.1016/j.combustflame.2024.113444.
+[14] Yangyang Ban, Fan Zhang, Naiyuan Zhang, Shenghui Zhong, Jiajian Zhu, Yiqiang Pei. The improved performance of plasma assisted combustion (PAC) simulations using the fully analytical Jacobian. Combustion and Flame, 2024, 270, 113788, https://doi.org/10.1016/j.combustflame.2024.113788. 
 
-[7] Yuchen Zhou, Shijie Xu, Leilei Xu, Xue-Song Bai. FGM modeling of ammonia/n-heptane combustion under RCCI engine conditions. Proceedings of the Combustion Institute, 2024, 40, 105601, https://doi.org/10.1016/j.proci.2024.105601.
+[15] Mohammad Shahsavari, Nilanjan Chakrabort, Shenghui Zhong, Agustin Valera-Medina, Mehdi Jangi. Comparative effects of plasma and preheating in assisting premixed ammonia/air flames: A DNS study. Fuel, 2025, 318, 133645, https://doi.org/10.1016/j.fuel.2024.133645.
 
-[8] Yangyang Ban, Fan Zhang, Naiyuan Zhang, Shenghui Zhong, Jiajian Zhu, Yiqiang Pei. The improved performance of plasma assisted combustion (PAC) simulations using the fully analytical Jacobian. Combustion and Flame, 2024, 270, 113788, https://doi.org/10.1016/j.combustflame.2024.113788. 
+[16] Amin Bekhradinasab, Shidvash Vakilipour, Jafar Al-Zaili. Influence of swirl number and air preheating on turbulent mixing in hydrogen–methane blends within a swirl-stabilized burner. International Journal of Heat and Mass Transfer, 2025, 239, 126475, https://doi.org/10.1016/j.ijheatmasstransfer.2024.126475.
 
-[9] Mohammad Shahsavari, Nilanjan Chakrabort, Shenghui Zhong, Agustin Valera-Medina, Mehdi Jangi. Comparative effects of plasma and preheating in assisting premixed ammonia/air flames: A DNS study. Fuel, 2025, 318, 133645, https://doi.org/10.1016/j.fuel.2024.133645.
+[17] Fan Zhang, Yangyang Ban, Shenghui Zhong, Zhenwei Li, Yiqiang Pei. Characteristics of inter-pulse coupling regimes during nanosecond pulse discharge with elevated single-pulse energy in flowing mixtures. Physics of Fluids, 2025, 37, 013619, https://doi.org/10.1063/5.0250530.
 
-[10] Amin Bekhradinasab, Shidvash Vakilipour, Jafar Al-Zaili. Influence of swirl number and air preheating on turbulent mixing in hydrogen–methane blends within a swirl-stabilized burner. International Journal of Heat and Mass Transfer, 2025, 239, 126475, https://doi.org/10.1016/j.ijheatmasstransfer.2024.126475.
+[18] Parsa Tamadonfar, Vili-Petteri Salomaa, Aleksi Rintanen, Shervin Karimkashi, Thorsten Zirwes, Ville Vuorinen, Ossi Kaario. A numerical study on side-wall quenching of premixed laminar flames: An analysis of ammonia/hydrogen/air mixtures. Combustion and Flame, 2025, 275, 114100, https://doi.org/10.1016/j.combustflame.2025.114100.
 
-[11] Fan Zhang, Yangyang Ban, Shenghui Zhong, Zhenwei Li, Yiqiang Pei. Characteristics of inter-pulse coupling regimes during nanosecond pulse discharge with elevated single-pulse energy in flowing mixtures. Physics of Fluids, 2025, 37, 013619, https://doi.org/10.1063/5.0250530.
+[19] Mohammad Shahsavari, Nilanjan Chakraborty, Alexander A. Konnov, Shenghui Zhong, Agustin Valera-Medina, Mehdi Jangi. A comparative analysis of plasma and hydrogen effects on premixed ammonia combustion. Combustion and Flame, 2025, 279, 114300, https://doi.org/10.1016/j.combustflame.2025.114300.
 
-[12] Parsa Tamadonfar, Vili-Petteri Salomaa, Aleksi Rintanen, Shervin Karimkashi, Thorsten Zirwes, Ville Vuorinen, Ossi Kaario. A numerical study on side-wall quenching of premixed laminar flames: An analysis of ammonia/hydrogen/air mixtures. Combustion and Flame, 2025, 275, 114100, https://doi.org/10.1016/j.combustflame.2025.114100.
+[20] Vili-Petteri Salomaa, Parsa Tamadonfar, Mahmoud Gadalla, Ville Vuorinen, Ossi Kaario. A numerical study of hydrogen enrichment effects on laminar methane/air flame propagation and emissions in crevices.  Applications in Energy and Combustion Science, 2025,  100351. https://doi.org/10.1016/j.jaecs.2025.100351.
 
-[13] Mohammad Shahsavari, Nilanjan Chakraborty, Alexander A. Konnov, Shenghui Zhong, Agustin Valera-Medina, Mehdi Jangi. A comparative analysis of plasma and hydrogen effects on premixed ammonia combustion. Combustion and Flame, 2025, 279, 114300, https://doi.org/10.1016/j.combustflame.2025.114300.
+[21] Yuchen Zhou, Shijie Xu, Leilei Xu, Xue-Song Bai. Ignition, combustion modes and NO/N2O emissions in ammonia/n-heptane combustion under RCCI engine conditions. Combustion and Flame, 2025, 280, 114352, https://doi.org/10.1016/j.combustflame.2025.114352.
 
-[14] Vili-Petteri Salomaa, Parsa Tamadonfar, Mahmoud Gadalla, Ville Vuorinen, Ossi Kaario. A numerical study of hydrogen enrichment effects on laminar methane/air flame propagation and emissions in crevices.  Applications in Energy and Combustion Science, 2025,  100351. https://doi.org/10.1016/j.jaecs.2025.100351.
+[22] Sheng Feng, Rixin Yu, Xue-Song Bai. Hierarchical autoencoder enhanced chemistry coordinate mapping. Physics of Fluids, 2025, 37, 075143, https://doi.org/10.1063/5.0274059.
 
-[15] Yuchen Zhou, Shijie Xu, Leilei Xu, Xue-Song Bai. Ignition, combustion modes and NO/N2O emissions in ammonia/n-heptane combustion under RCCI engine conditions. Combustion and Flame, 2025, 280, 114352, https://doi.org/10.1016/j.combustflame.2025.114352.
+[23] Gihun Shim, Praise Noah Johnson, Taaresh Sanjeev Taneja, and Suo Yang. Drift-Diffusion Modeling of Non-equilibrium Plasma Streamerswith Photoionization. AIAA SCITECH 2026 Forum, https://doi.org/10.2514/6.2026-0399.
 
-[16] Sheng Feng, Rixin Yu, Xue-Song Bai. Hierarchical autoencoder enhanced chemistry coordinate mapping. Physics of Fluids, 2025, 37, 075143, https://doi.org/10.1063/5.0274059.
+[24] Liqing Lu, Meng Zhang, Weijie Zhang, Ziqi Wang, Jinhua Wang, Zuohua Huang. A dynamic adaptive table look-up approach for FGM modeling of axially staged ammonia flames. Proceedings of the Combustion Institute, 2026, 42, 106129, https://doi.org/10.1016/j.proci.2026.106129.
 
-[17] Gihun Shim, Praise Noah Johnson, Taaresh Sanjeev Taneja, and Suo Yang. Drift-Diffusion Modeling of Non-equilibrium Plasma Streamerswith Photoionization. AIAA SCITECH 2026 Forum, https://doi.org/10.2514/6.2026-0399.
+[25] Xingyuan Liang, Zhenhua An, Jiangkuan Xing, Debojit Sharma, Hongyuan Di, Ryoichi Kurose. Effect of turbulence intensity on near-wall quenching of partially cracked ammonia premixed flames. Proceedings of the Combustion Institute, 2026, 42, 106055, https://doi.org/10.1016/j.proci.2026.106055.
 
-[18] Liqing Lu, Meng Zhang, Weijie Zhang, Ziqi Wang, Jinhua Wang, Zuohua Huang. A dynamic adaptive table look-up approach for FGM modeling of axially staged ammonia flames. Proceedings of the Combustion Institute, 2026, 42, 106129, https://doi.org/10.1016/j.proci.2026.106129.
-
-[19] Xingyuan Liang, Zhenhua An, Jiangkuan Xing, Debojit Sharma, Hongyuan Di, Ryoichi Kurose. Effect of turbulence intensity on near-wall quenching of partially cracked ammonia premixed flames. Proceedings of the Combustion Institute, 2026, 42, 106055, https://doi.org/10.1016/j.proci.2026.106055.
-
-[20] Yangyang Ban, Fan Zhang, Shenghui Zhong, Yiqiang Pei. The transport enhancement effects and stretch tolerance in plasma assisted counterflow flames. Proceedings of the Combustion Institute, 2026, 42, 106310, https://doi.org/10.1016/j.proci.2026.106310.
+[26] Yangyang Ban, Fan Zhang, Shenghui Zhong, Yiqiang Pei. The transport enhancement effects and stretch tolerance in plasma assisted counterflow flames. Proceedings of the Combustion Institute, 2026, 42, 106310, https://doi.org/10.1016/j.proci.2026.106310.
 
