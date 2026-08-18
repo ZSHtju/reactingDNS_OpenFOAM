@@ -87,3 +87,7 @@ Other published papers using reactingDNS solver:
 
 [18] Liqing Lu, Meng Zhang, Weijie Zhang, Ziqi Wang, Jinhua Wang, Zuohua Huang. A dynamic adaptive table look-up approach for FGM modeling of axially staged ammonia flames. Proceedings of the Combustion Institute, 2026, 42, 106129, https://doi.org/10.1016/j.proci.2026.106129.
 
+[19] Xingyuan Liang, Zhenhua An, Jiangkuan Xing, Debojit Sharma, Hongyuan Di, Ryoichi Kurose. Effect of turbulence intensity on near-wall quenching of partially cracked ammonia premixed flames. Proceedings of the Combustion Institute, 2026, 42, 106055, https://doi.org/10.1016/j.proci.2026.106055.
+
+[20] Yangyang Ban, Fan Zhang, Shenghui Zhong, Yiqiang Pei. The transport enhancement effects and stretch tolerance in plasma assisted counterflow flames. Proceedings of the Combustion Institute, 2026, 42, 106310, https://doi.org/10.1016/j.proci.2026.106310.
+
